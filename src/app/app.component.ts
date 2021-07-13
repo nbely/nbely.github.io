@@ -1,4 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -15,7 +16,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public isMenuOpen: boolean = false;
   collapseAllNav: boolean = false;
   collapseSectionNav: boolean = false;
-  sideNavOpen: boolean = false;
   navLinks: string[] = [];
   activeLink: string | null = null;
 
@@ -30,7 +30,11 @@ export class AppComponent implements OnInit, OnDestroy {
         if (path.length > 2) {
           this.activeLink = path[path.length-1];
         } else {
-          this.activeLink = 'introduction';
+          if (path[path.length-1] === 'about') {
+            this.activeLink = 'introduction';
+          } else {
+            this.activeLink = 'projects';
+          }
         }
         this.navService.activeLink.next(this.activeLink);
       }
@@ -57,9 +61,25 @@ export class AppComponent implements OnInit, OnDestroy {
     this.navService.isCollapsed.next(this.collapseAllNav);
   }
 
+  onToggleSidenav(sidenav: MatSidenav): void {
+    sidenav.toggle();
+    // sidenav.openedChange.subscribe(openState => {
+    //   this.isMenuOpen = openState;
+    // });
+    if (this.isMenuOpen) {
+      sidenav.closedStart.subscribe(() => {
+        this.isMenuOpen = false;
+      })
+    }
+    else {
+      sidenav.openedStart.subscribe(() => {
+        this.isMenuOpen = true;
+      })
+    }
+  }
+
   onSidenavClick(): void {
     this.isMenuOpen = false;
-    this.sideNavOpen = false;
     if (this.activeLink) {
       this.navService.pushNewLink(this.activeLink);
     }
