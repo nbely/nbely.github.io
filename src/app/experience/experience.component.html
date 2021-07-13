@@ -1,0 +1,16 @@
+<div class="component-container">
+    <main>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <div fxFlex class="exp-container">
+                <div *ngIf="collapseNav">
+                    <app-projects></app-projects>
+                    <hr class="component-divider">
+                    <app-volunteer></app-volunteer>
+                    <hr class="component-divider">
+                    <app-work></app-work>
+                </div>
+                <router-outlet *ngIf="!collapseNav"></router-outlet>
+            </div>
+        </div>
+    </main>
+</div>
