@@ -1,0 +1,59 @@
+<div class="page-container">
+  <header>
+    <div fxLayout="row" fxLayout="row" class="header-content">
+      <div fxFlex="216px" class="hamburger-menu-title">
+        <button 
+          mat-button 
+          class="menu-button" 
+          (click)="sidenav.toggle()"
+          (click)="sideNavOpen = !sideNavOpen">
+            <mat-icon>
+              {{ isMenuOpen ? 'menu_open' : 'menu' }}
+            </mat-icon>
+        </button>
+        <a href="#">
+            <span class="app-title">Nick Bely</span>
+        </a>
+      </div>
+      <div fxFlex="" class="section-menu">
+        <nav mat-tab-nav-bar *ngIf="!collapseAllNav && !collapseSectionNav">
+          <a 
+            mat-tab-link
+            *ngFor="let link of navLinks"
+            (click)="onSelectRoute(link)"
+            [routerLink] = "link"
+            routerLinkActive 
+            [active]="activeLink === link"
+            [disabled]="sideNavOpen">
+            {{ link | titlecase }}
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav 
+      #sidenav 
+      autoFocus="false" 
+      mode="push" 
+      [(opened)]="isMenuOpen" 
+      class="sidenav"
+      (click)="onSidenavClick()"
+      [ngClass]="{collapsedSidenav: collapseAllNav}">
+        <a mat-button routerLink="/about">
+          <mat-icon class="nav-icon">person</mat-icon> About
+        </a>
+        <a mat-button routerLink="/experience">
+          <mat-icon class="nav-icon">business_center</mat-icon> Experience
+        </a>
+        <a mat-button routerLink="/contact">
+          <mat-icon class="nav-icon">email</mat-icon> Contact Me
+        </a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

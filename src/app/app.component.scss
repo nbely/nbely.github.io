@@ -1,0 +1,97 @@
+.page-container {
+    height: 100%;
+    background-image: url('../assets/ember-spark.png');
+    background-size: 100%;
+    background-size: cover;
+    color: #000;
+
+    display: flex;
+    flex-direction: column;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    header {
+        background: rgba(0, 0, 0, 0.6);
+        color: darkslategrey;
+
+        padding: 0px 24px;
+        font-size: 24px;
+
+        display: flex;
+        justify-content: space-between;
+
+        .header-content { 
+            margin: 0 auto;
+            width: 100vw;
+
+            .hamburger-menu-title {
+
+                margin: auto;
+                padding: 8px 0;
+
+                .menu-button {
+                    font-size: inherit;
+                    background-color: inherit;
+                    color: inherit;
+                    margin-right: 24px;
+                    min-width: 0;
+                    padding: 0;
+                    line-height: normal;
+                }
+
+                .app-title {
+                    padding: 0 3px;
+                    color: #fff;
+                    font-family: 'Roboto Slab', serif;
+                }
+            }
+
+            .section-menu {
+                .mat-tab-links {
+                    font-size: 18px;
+                    color: white;
+                }
+
+                .mat-tab-header {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+}
+
+.sidenav-container {
+    flex: 1;
+    background: rgba(0, 0, 0, 0);
+
+    .sidenav {
+        min-width: 240px;
+        background: rgba(0, 0, 0, .25);
+        color: #fff;
+
+        a {
+            font-size: 16px;
+            display: block;
+            padding: 6px 24px;
+            width: 100%;
+            text-align: left;
+            font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+
+        .mat-button:hover {
+            background-color: rgba(0, 0, 0, .5)
+        }
+
+        .nav-icon {
+            padding-right: 10px;
+        }
+    }
+}
+
+.collapsedSidenav {
+    width: 100%
+}
