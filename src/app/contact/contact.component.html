@@ -2,7 +2,58 @@
     <main>
         <div fxLayout="row" fxLayoutAlign="center">
             <div fxFlex class="contact-container">
-                <p>contact works!</p>
+                <mat-spinner *ngIf="isSubmitting" diameter="100"></mat-spinner>
+                <form [formGroup]="formData" *ngIf="!isSubmitting">
+                    <div fxLayout="column" class="form-container" fxLayoutAlign="space-evenly">
+                        <div fxFlex="5">
+                            <h1>Let's get in touch!</h1>
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxFlex>
+                            <div fxFlex="48.75">
+                                <mat-form-field appearance="fill" class="email-field">
+                                    <mat-label for="Email">Enter your email</mat-label>
+                                    <input matInput type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email"formControlName="email">
+                                    <mat-hint id="emailHelp">I'll never share your email with anyone else.</mat-hint>
+                                    <!-- <mat-error *ngIf="!formData.get('email').valid && formData.get('email').touched"></mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div fxFlex="2.5">
+                            </div>
+                            <div fxFlex="48.75">
+                                <mat-form-field appearance="fill" class="name-field">
+                                    <mat-label for="fullname">Enter your full name</mat-label>
+                                    <input matInput type="text" class="form-control" name="fullname" placeholder="Enter name" formControlName="fullname">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div fxFlex>
+                            <mat-form-field appearance="fill" class="comment-field">
+                                <mat-label for="comment">Comment</mat-label>
+                                <textarea matInput class="comment-field" formControlName="comment" name="comment">
+                                </textarea>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayout.xs="column" fxFlex="48.75">
+                            <div fxFlex fxLayoutAlign="start">
+                                <button 
+                                    mat-flat-button 
+                                    type="button" 
+                                    [disabled]="!formData.valid" 
+                                    (click)="onSubmit(formData.value)">
+                                    Submit
+                                </button>
+                            </div>
+                            <div fxFlex="2.5">
+                            </div>
+                            <div fxFlex="48.75" fxLayoutAlign="start" fxLayoutAlign.xs="center">
+                                <div *ngIf="formSubmitted" class="submit-received-text">
+                                    <p>Your message has been received!</p>
+                                    <a href="https://mailthis.to/confirm">Click here for a confirmation.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
