@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { NavService } from './nav.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public isMenuOpen: boolean = false;
   collapseAllNav: boolean = false;
   collapseSectionNav: boolean = false;
@@ -20,6 +20,9 @@ export class AppComponent implements OnInit, OnDestroy {
   activeLink: string | null = null;
 
   private navLinksSub: Subscription;
+  private sidenavOpenedSub!: Subscription;
+  private sidenavClosedSub!: Subscription;
+  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
 
   constructor(private navService: NavService, private router: Router) {
     this.navLinksSub = this.navService.navLinks.subscribe(links => {
@@ -45,10 +48,20 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit(): void {
-    if (window.innerWidth <= 719) {
+    if (window.innerWidth < 720) {
       this.collapseAllNav = true;
       this.navService.isCollapsed.next(this.collapseAllNav);
     }
+  }
+
+  ngAfterViewInit() {
+    console.log(this.sidenav);
+    this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
+      this.isMenuOpen = true;
+    })
+    this.sidenavClosedSub = this.sidenav.closedStart.subscribe(() => {
+      this.isMenuOpen = false;
+    })
   }
 
   @HostListener('window:resize', ['$event']) 
@@ -59,23 +72,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.collapseAllNav = false;
     }
     this.navService.isCollapsed.next(this.collapseAllNav);
-  }
-
-  onToggleSidenav(sidenav: MatSidenav): void {
-    sidenav.toggle();
-    // sidenav.openedChange.subscribe(openState => {
-    //   this.isMenuOpen = openState;
-    // });
-    if (this.isMenuOpen) {
-      sidenav.closedStart.subscribe(() => {
-        this.isMenuOpen = false;
-      })
-    }
-    else {
-      sidenav.openedStart.subscribe(() => {
-        this.isMenuOpen = true;
-      })
-    }
   }
 
   onSidenavClick(): void {
@@ -96,5 +92,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.navLinksSub.unsubscribe();
+    this.sidenavOpenedSub.unsubscribe();
+    this.sidenavClosedSub.unsubscribe();
   }
 }

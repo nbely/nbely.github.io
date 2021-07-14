@@ -5,7 +5,7 @@
         <button 
           mat-button 
           class="menu-button" 
-          (click)="onToggleSidenav(sidenav)">
+          (click)="sidenav.toggle()">
             <mat-icon>
               {{ isMenuOpen ? 'menu_open' : 'menu' }}
             </mat-icon>
@@ -14,8 +14,12 @@
             <span class="app-title">Nick Bely</span>
         </a>
       </div>
-      <div fxFlex="" class="section-menu">
-        <nav mat-tab-nav-bar *ngIf="!collapseAllNav && !collapseSectionNav" [ngClass]="{removeHighlights: isMenuOpen}">
+      <div fxFlex class="section-menu">
+        <nav 
+          mat-tab-nav-bar 
+          *ngIf="!collapseAllNav && !collapseSectionNav" 
+          [ngClass]="{removeHighlights: isMenuOpen}"
+        >
           <a 
             mat-tab-link
             *ngFor="let link of navLinks"
@@ -23,7 +27,8 @@
             [routerLink] = "link"
             routerLinkActive 
             [active]="activeLink === link"
-            [disabled]="isMenuOpen">
+            [disabled]="isMenuOpen"
+          >
             {{ link | titlecase }}
           </a>
         </nav>
