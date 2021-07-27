@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -19,12 +19,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   navLinks: string[] = [];
   activeLink: string | null = null;
 
-  private navLinksSub: Subscription;
-  private sidenavOpenedSub!: Subscription;
-  private sidenavClosedSub!: Subscription;
-  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
+  private navLinksSub: Subscription | undefined;
+  private sidenavOpenedSub: Subscription | undefined;
+  private sidenavClosedSub: Subscription | undefined ;
+  @ViewChild('sidenav', { static: false }) sidenav: MatSidenav | undefined;
 
-  constructor(private navService: NavService, private router: Router) {
+  constructor(private navService: NavService, private router: Router, private cdr: ChangeDetectorRef) {}
+  
+  ngOnInit(): void {
     this.navLinksSub = this.navService.navLinks.subscribe(links => {
       if (links) {
         this.collapseSectionNav = false;
@@ -44,24 +46,24 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       else {
         this.collapseSectionNav = true;
       }
+      this.cdr.detectChanges();
     });
-  }
-  
-  ngOnInit(): void {
+
     if (window.innerWidth < 720) {
       this.collapseAllNav = true;
       this.navService.isCollapsed.next(this.collapseAllNav);
     }
   }
 
-  ngAfterViewInit() {
-    console.log(this.sidenav);
-    this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
-      this.isMenuOpen = true;
-    })
-    this.sidenavClosedSub = this.sidenav.closedStart.subscribe(() => {
-      this.isMenuOpen = false;
-    })
+  ngAfterViewInit(): void {
+    if (this.sidenav) {
+      this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
+        this.isMenuOpen = true;
+      })
+      this.sidenavClosedSub = this.sidenav.closedStart.subscribe(() => {
+        this.isMenuOpen = false;
+      })
+    }
   }
 
   @HostListener('window:resize', ['$event']) 
@@ -85,14 +87,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  onSelectRoute(link: string) {
+  onSelectRoute(link: string): void {
     this.activeLink = link;
     this.navService.pushNewLink(this.activeLink);
   }
 
-  ngOnDestroy() {
-    this.navLinksSub.unsubscribe();
-    this.sidenavOpenedSub.unsubscribe();
-    this.sidenavClosedSub.unsubscribe();
+  ngOnDestroy(): void {
+    if (this.navLinksSub) this.navLinksSub.unsubscribe();
+    if (this.sidenavOpenedSub) this.sidenavOpenedSub.unsubscribe();
+    if (this.sidenavClosedSub) this.sidenavClosedSub.unsubscribe();
   }
 }
