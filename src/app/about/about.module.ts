@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_TABS_CONFIG } from '@angular/material/tabs';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AboutRoutingModule } from './about-routing.module';
 import { AboutComponent } from './about.component';
@@ -19,7 +18,6 @@ import { backgroundComponent } from './background/background.component';
     CommonModule,
     AppUiModule,
     AboutRoutingModule,
-    PdfViewerModule,
   ],
   providers: [
     { provide: MAT_TABS_CONFIG, useValue: { animationDuration: '0ms' } }
