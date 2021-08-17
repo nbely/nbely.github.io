@@ -1,19 +1,32 @@
 <div fxLayout="column" class="intro-container">
-    <h1>Hello, I'm <span class="bolded">Nick Bely</span>!</h1>
+    <h1>Hello, I'm <span class="bolded">Nick</span>!</h1>
     <div fxFlex fxLayout="row" fxLayoutAlign="center">
         <div class="image-container">
-            <img class="circle-image" src="../../../assets/me2.jpg" alt="A picture of Nick Bely.">
+            <img class="circle-image" src="../../../assets/me.jpg" alt="A picture of Nick Bely.">
         </div>
     </div>
     <div fxFlex fxLayout="row" fxLayoutAlign="center">
-        <p>I'm a self-taught <span class="bolded">Front-End Developer</span> passionate about creating thoughtful and interactive applications and web experiences.</p>
+        <p>I'm a self-taught <span class="bolded">Front End Developer</span> passionate about creating thoughtful and interactive applications and web experiences.</p>
     </div>
     <div fxFlex fxLayout="row" fxLayoutAlign="center">
-        <button 
+        <button
+            class="long-button" 
             mat-flat-button 
             type="button"
-            (click)="onOpenResume()">
+            (click)="onButtonClick('/assets/Bely_Nicholas_Resume_2021.pdf')">
             Résumé
+        </button>
+        <button
+            class="short-button" 
+            mat-flat-button 
+            (click)="onButtonClick('https://www.linkedin.com/in/nicholas-bely-57a696a1/')">
+            <i class="fab fa-linkedin fa-2x"></i>
+        </button>
+        <button
+            class="short-button" 
+            mat-flat-button 
+            (click)="onButtonClick('https://github.com/nbely/')">
+            <i class="fab fa-github fa-2x"></i>
         </button>
     </div>
 </div>

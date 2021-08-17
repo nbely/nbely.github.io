@@ -42,6 +42,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
               this.nextLink = 'contact me';
             }
           }
+          if (this.collapseNav) {
+            this.nextLink = 'contact me';
+          }
         }
       });
 

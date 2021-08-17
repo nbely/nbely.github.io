@@ -34,11 +34,19 @@
     }
 
     .mat-flat-button {
-        width: 120px;
         height: 50px;
         margin-bottom: 24px;
         background: rgba(255, 255, 255, 0.4);
         font-size: 16px;
-        border-radius: 30px;
+        border-radius: 30px;  
+    }
+
+    .long-button {
+        width: 120px;
+    }
+
+    .short-button {
+        width: 75px;
+        margin-left: 12px;
     }
 }

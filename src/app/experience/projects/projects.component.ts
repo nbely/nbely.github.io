@@ -12,4 +12,7 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onButtonClick(link: string) {
+    window.open(link, '_blank');
+  }
 }

@@ -13,7 +13,7 @@ export class IntroductionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onOpenResume() {
-    window.open(`/assets/Bely_Nicholas_Resume_2021.pdf`, '_blank');
+  onButtonClick(link: string) {
+    window.open(link, '_blank');
   }
 }

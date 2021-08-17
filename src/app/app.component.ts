@@ -1,7 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { NavService } from './nav.service';
 
@@ -28,6 +29,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(private navService: NavService, private router: Router, private cdr: ChangeDetectorRef) {}
   
   ngOnInit(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        document.querySelector('.mat-sidenav-content')!.scrollTop = 0;
+      })
+
     this.navLinksSub = this.navService.navLinks.subscribe(links => {
       if (links) {
         this.collapseSectionNav = false;

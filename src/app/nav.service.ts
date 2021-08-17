@@ -11,5 +11,6 @@ export class NavService {
 
     pushNewLink(link: string | null) {
         this.activeLink.next(link);
+        window.scroll(0,0);
     }
 }

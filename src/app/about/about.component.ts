@@ -42,6 +42,9 @@ export class AboutComponent implements OnInit, OnDestroy {
               this.nextLink = 'projects';
             }
           }
+          if (this.collapseNav) {
+            this.nextLink = 'projects';
+          }
         }
       });
 
