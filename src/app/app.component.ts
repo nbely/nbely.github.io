@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   activeLink: string | null = null;
 
   private navLinksSub: Subscription | undefined;
+  private activeLinkSub: Subscription | undefined;
   private sidenavOpenedSub: Subscription | undefined;
   private sidenavClosedSub: Subscription | undefined ;
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav | undefined;
@@ -48,6 +49,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       this.cdr.detectChanges();
     });
+
+    this.activeLinkSub = this.navService.activeLink.subscribe(link => {
+      if (link) {
+        this.activeLink = link;
+      }
+    })
 
     if (window.innerWidth < 720) {
       this.collapseAllNav = true;
@@ -94,6 +101,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     if (this.navLinksSub) this.navLinksSub.unsubscribe();
+    if (this.activeLinkSub) this.activeLinkSub.unsubscribe();
     if (this.sidenavOpenedSub) this.sidenavOpenedSub.unsubscribe();
     if (this.sidenavClosedSub) this.sidenavClosedSub.unsubscribe();
   }

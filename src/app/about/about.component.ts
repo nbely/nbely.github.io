@@ -10,9 +10,11 @@ import { NavService } from '../nav.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit, OnDestroy {
-  navLinks: string[] = ['introduction', 'education', 'resume'];
+  navLinks: string[] = ['introduction', 'background'];
   activeLink: string | null = 'introduction';
+  nextLink: string | null = 'background';
   collapseNav: boolean = false;
+  nextPageReroutes: boolean = false;
 
   private activeLinkSub: Subscription | undefined;
   private collapseSub: Subscription | undefined;
@@ -28,16 +30,50 @@ export class AboutComponent implements OnInit, OnDestroy {
 
     this.activeLinkSub = this.navService.activeLink
       .subscribe((link: string | null) => {
-        if (link && this.navLinks.indexOf(link) !== -1) {
-          this.activeLink = link;
-          this.router.navigate([`/about/${this.activeLink}`]);
+        if (link) {
+          let index: number = this.navLinks.indexOf(link);
+          if (index !== -1) {
+            this.activeLink = link;
+            this.router.navigate([`/about/${this.activeLink}`]);
+            if (index < this.navLinks.length - 1) {
+              this.nextLink = this.navLinks[index + 1];
+            }
+            else {
+              this.nextLink = 'projects';
+            }
+          }
         }
-      })
+      });
 
     this.collapseSub = this.navService.isCollapsed
       .subscribe((collapseState: boolean) => {
         this.collapseNav = collapseState;
-      })
+        if (this.collapseNav) {
+          this.nextLink = 'projects';
+        }
+        else {
+          if (this.activeLink) {
+            let index: number = this.navLinks.indexOf(this.activeLink);
+            if (index < this.navLinks.length - 1) {
+              this.nextLink = this.navLinks[index + 1];
+            }
+            else {
+              this.nextLink = 'projects';
+            }
+          }
+        }
+      });
+  }
+
+  onClickNextPage() {
+    if (this.nextLink !== 'projects') {
+      this.router.navigate([`/about/${this.nextLink}`]);
+    }
+    else {
+      this.router.navigate([`/experience/${this.nextLink}`]);
+      this.nextPageReroutes = true;
+    }
+    this.navService.activeLink.next(this.nextLink);
   }
 
   ngOnDestroy() {
