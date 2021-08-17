@@ -1,1 +1,19 @@
-<p>introduction works!</p>
+<div fxLayout="column" class="intro-container">
+    <h1>Hello, I'm <span class="bolded">Nick Bely</span>!</h1>
+    <div fxFlex fxLayout="row" fxLayoutAlign="center">
+        <div class="image-container">
+            <img class="circle-image" src="../../../assets/me2.jpg" alt="A picture of Nick Bely.">
+        </div>
+    </div>
+    <div fxFlex fxLayout="row" fxLayoutAlign="center">
+        <p>I'm a self-taught <span class="bolded">Front-End Developer</span> passionate about creating thoughtful and interactive applications and web experiences.</p>
+    </div>
+    <div fxFlex fxLayout="row" fxLayoutAlign="center">
+        <button 
+            mat-flat-button 
+            type="button"
+            (click)="onOpenResume()">
+            Résumé
+        </button>
+    </div>
+</div>

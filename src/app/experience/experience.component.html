@@ -1,15 +1,32 @@
 <div class="component-container">
     <main>
-        <div fxLayout="row" fxLayoutAlign="center">
-            <div fxFlex class="exp-container">
-                <div *ngIf="collapseNav">
-                    <app-projects></app-projects>
-                    <hr class="component-divider">
-                    <app-volunteer></app-volunteer>
-                    <hr class="component-divider">
-                    <app-work></app-work>
+        <div fxLayout="column">
+            <div fxFlex fxLayout="row" fxLayoutAlign="center">
+                <div fxFlex class="exp-container">
+                    <div *ngIf="collapseNav">
+                        <app-projects></app-projects>
+                        <hr class="component-divider">
+                        <app-volunteer></app-volunteer>
+                        <hr class="component-divider">
+                        <app-work></app-work>
+                    </div>
+                    <router-outlet *ngIf="!collapseNav"></router-outlet>
                 </div>
-                <router-outlet *ngIf="!collapseNav"></router-outlet>
+            </div>
+            <div fxFlex fxLayout="row" fxLayoutAlign="center" *ngIf="!collapseNav || !nextPageReroutes">
+                <button 
+                mat-flat-button 
+                type="button" 
+                class="next-page-button" 
+                (click)="onClickNextPage()"
+                disableRipple="true">
+                    <div class="arrow-underlay">
+                        <div class="text-overlay">
+                            <mat-icon>arrow_right_alt</mat-icon>
+                        </div>
+                        {{ nextLink | titlecase }}
+                    </div> 
+                </button>
             </div>
         </div>
     </main>

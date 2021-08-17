@@ -23,19 +23,20 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.navService.navLinks.next(null);
-    this.formData = this.builder.group({
-      fullname: new FormControl('', [Validators.required]),
-      email: new FormControl('', Validators.compose([
-        Validators.required, 
+    this.formData = new FormGroup({
+      'fullname': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [
+        Validators.required,
         Validators.email
-      ])),
-      comment: new FormControl('', [Validators.required])
-    })
+      ]),
+      'comment': new FormControl(null, [Validators.required])
+    });
   }
 
   onSubmit(form: any) {
     this.isSubmitting = true;
     console.log(form);
+    
     this.contactService.postMessage(form).subscribe((res: any) => {
       this.isSubmitting = false;
       this.formSubmitted = true;
