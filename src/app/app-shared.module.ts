@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppUiModule } from './app-ui.module';
 import { ArrowButtonComponent } from './components/arrow-button/arrow-button.component';
-import { ChevronLeftSVGComponent } from './components/arrow-button/chevron-left/chevron-left-svg.component';
-import { ChevronRightSVGComponent } from './components/arrow-button/chevron-right/chevron-right-svg.component';
+import { ChevronSVGComponent } from './components/arrow-button/chevron-svg/chevron-svg.component';
 import { IconGroupComponent } from './components/icon-group/icon-group.component';
 
 const sharedComponents = [
   ArrowButtonComponent,
-  ChevronLeftSVGComponent,
-  ChevronRightSVGComponent,
+  ChevronSVGComponent,
   IconGroupComponent
 ]
 
