@@ -3,6 +3,5 @@
     type="button"
     class="next-page-button"
     disableRipple="true">
-    <app-chevron-left-svg *ngIf="direction === 'left'" class="svg-icon"></app-chevron-left-svg>
-    <app-chevron-right-svg *ngIf="direction === 'right'" class="svg-icon"></app-chevron-right-svg>
+    <app-chevron-svg [direction]="direction" class="svg-icon"></app-chevron-svg>
 </button>
