@@ -6,9 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./arrow-button.component.scss']
 })
 export class ArrowButtonComponent {
-  @Input() text: string | null = "";
-
-  constructor() { 
-    // Empty Constructor
-}
+  @Input() direction: string | null = "right";
 }

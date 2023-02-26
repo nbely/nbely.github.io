@@ -12,6 +12,7 @@
         font-size: large;
         margin: 24px 0;
         max-width: 800px;
+        flex-wrap: wrap;
     }
     .circle-image {
         background-color: rgba(0, 0, 0, 0.5);
@@ -22,6 +23,8 @@
         margin: 10px;
         object-fit: cover;
         width: 325px;
+        transition: height 0.1 linear;
+        transition: width 0.1 linear;
     }
     .bolded {
         color: rgba(0, 0, 0, 0.80);
@@ -44,5 +47,16 @@
     .short-button {
         margin-left: 12px;
         width: 75px;
+    }
+}
+
+@media screen and (max-width: 719px) {
+    .intro-container {
+        margin: 0;
+
+        .circle-image {
+            height: 300px;
+            width: 300px;
+        }
     }
 }

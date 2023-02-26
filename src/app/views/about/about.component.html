@@ -1,5 +1,12 @@
 <div class="component-container">
     <main>
+        <div class="button-container" *ngIf="!collapseNav">
+            <app-arrow-button
+                *ngIf="activeLink != 'introduction'"
+                direction="left"
+                (click)="onClickNextPage()">
+            </app-arrow-button>
+        </div>
         <div class="about-container">
             <div *ngIf="collapseNav">
                 <app-introduction></app-introduction>
@@ -8,10 +15,10 @@
             </div>
             <router-outlet *ngIf="!collapseNav"></router-outlet>
         </div>
-        <app-arrow-button
-            *ngIf="!collapseNav || !nextPageReroutes"
-            [text]="nextLink"
-            (click)="onClickNextPage()">
-        </app-arrow-button>
+        <div class="button-container" *ngIf="!collapseNav">
+            <app-arrow-button
+                (click)="onClickNextPage()">
+            </app-arrow-button>
+        </div>
     </main>
 </div>

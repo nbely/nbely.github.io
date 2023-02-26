@@ -1,10 +1,8 @@
-<button 
-    mat-flat-button 
-    type="button" 
-    class="next-page-button" 
+<button
+    mat-flat-button
+    type="button"
+    class="next-page-button"
     disableRipple="true">
-        <div class="arrow-underlay">
-            <p>{{ text | titlecase }}</p>
-            <mat-icon>arrow_right_alt</mat-icon>
-        </div> 
+    <app-chevron-left-svg *ngIf="direction === 'left'" class="svg-icon"></app-chevron-left-svg>
+    <app-chevron-right-svg *ngIf="direction === 'right'" class="svg-icon"></app-chevron-right-svg>
 </button>
