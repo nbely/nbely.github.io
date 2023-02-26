@@ -93,11 +93,27 @@
     main {
         align-items: center;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         padding: 18px 12px;
-        width: 100%;
-    }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+
+            app-arrow-button {
+                margin: 0 20px;
+                width: 80px;
+                transition: width 0.2s linear;
     
+                &:hover {
+                    width: 90px;
+                }
+            }
+        }
+    }
 }
 
 .sidenav-container {
