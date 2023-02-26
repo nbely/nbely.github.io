@@ -1,122 +1,137 @@
 .page-container {
-    height: 100%;
-    background-image: url('../assets/ranger-mode.png');
-    background-size: 100%;
     background-size: cover;
     color: #000;
-
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     a {
         color: inherit;
         text-decoration: none;
     }
-
     header {
-        background: rgba(0, 0, 0, 0.70);
-        color: #fff;
-        height: 48px;
-
-        padding: 0px 19px 0px 19px;
-        font-size: 24px;
-
+        color: #000;
         display: flex;
+        font-size: 24px;
+        height: 48px;
         justify-content: space-between;
+        padding: 0px 20px;
 
         .header-content { 
+            display: flex;
+            flex-direction: row;
             margin: 0 auto;
             width: 100vw;
 
             .hamburger-menu-title {
-
-                margin: auto;
+                height: 36.5px;
+                margin: auto 0;
                 padding: 0;
-
-                .menu-button {
-                    font-size: inherit;
-                    background-color: inherit;
-                    height: 34px;
-                    width: 34px;
-                    color: inherit;
-                    margin-right: 24px;
-                    padding: 0 0 5px 0;
-                    min-width: 0;
-                    line-height: normal;
-                }
+                width: 220px;
 
                 .app-title {
-                    color: #fff;
-                    top: 2.5px;
+                    color: #000;
                     font-family: 'Roboto Slab', serif;
                 }
+                .menu-button {
+                    background-color: inherit;
+                    color: inherit;
+                    font-size: inherit;
+                    height: 34px;
+                    line-height: normal;
+                    margin-right: 24px;
+                    min-width: 0;
+                    padding: 0;
+                    width: 34px;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.05)
+                    }
+                    .mat-icon {
+                        font-size: inherit;
+                        height: 24px;
+                        margin: 0;
+                        width: 24px;
+                    }
+                }
             }
-
             .section-menu {
-                .mat-tab-links {
-                    font-size: 18px;
-                    color: white;
+                .mat-mdc-tab-link {
+                    .mdc-tab__content {
+                        min-width: 100px;
+                    }
+                    .mdc-tab__text-label {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
                 }
-
-                .mat-tab-header {
-                    border-bottom: none;
-                }
-
                 .removeHighlights.mat-primary .mat-ink-bar {
                     display: none;
                 }
-            }
-
-            .theme-changer {
-                margin: auto;
-                width: 34px;
-
-                .theme-button {
-                    font-size: inherit;
-                    background-color: inherit;
-                    color: inherit;
-                    width: 34px;
-                    height: 34px;
-                    margin: auto;
-                    min-width: 0;
-                    padding: 0 0 5px 0;
-                    line-height: normal;
+                .mat-mdc-tab-link:hover {
+                    background-color: rgba(0, 0, 0, 0.05)
                 }
             }
+            // .theme-changer {
+            //     margin: auto;
+            //     width: 34px;
+
+            //     .theme-button {
+            //         font-size: inherit;
+            //         background-color: inherit;
+            //         color: inherit;
+            //         width: 34px;
+            //         height: 34px;
+            //         margin: auto;
+            //         min-width: 0;
+            //         padding: 0 0 5px 0;
+            //         line-height: normal;
+            //     }
+            // }
         }
     }
-
+    main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 18px 12px;
+        width: 100%;
+    }
+    
 }
 
 .sidenav-container {
-    flex: 1;
     background: rgba(0, 0, 0, 0);
+    flex: 1;
 
     .sidenav {
-        min-width: 240px;
-        background: rgba(0, 0, 0, .25);
         color: #fff;
+        min-width: 240px;
 
-        a {
-            font-size: 16px;
+        .mdc-button {
             display: block;
-            padding: 6px 24px;
-            width: 100%;
+            height: 48px;
+            font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 24px;
             text-align: left;
-            font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+            width: 100%;
+        
+            .mdc-button__label {
+                line-height: 24px;
+            }
+            .mat-icon {
+                font-size: 24px;
+                height: 24px;
+                width: 24px;
+            }
         }
-
-        .mat-button:hover {
-            background-color: rgba(0, 0, 0, .5)
-        }
-
-        .nav-icon {
-            padding-right: 10px;
+        .mdc-button:hover {
+            background-color: rgba(0, 0, 0, 0.05)
         }
     }
 }
-
-
 
 .collapsedSidenav {
     width: 100%
@@ -124,20 +139,18 @@
 
 footer {
     background: rgba(0, 0, 0, 0.70);
-    color: #fff;
-    height: 30px;
-    width: 100%;
     bottom: 0%;
-
+    color: #fff;
     display: flex;
+    height: 30px;
     justify-content: center;
+    width: 100%;
 
     p {
         color : rgba(255, 255, 255, 0.70);
-        margin: auto;
-
-        font-size: 12px;
         font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        margin: auto;
         text-align: center;
     }
 }

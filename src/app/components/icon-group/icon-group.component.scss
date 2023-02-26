@@ -1,0 +1,25 @@
+.fab, .fas {
+    color: rgba(0, 0, 0, 0.75);
+    //margin: 0px 10px 0px 10px;
+}
+.svg-icons {
+    height: 48px;
+    margin-bottom: -4px;
+    width: 42px;
+}
+.skills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    div {
+        width: 110px;
+
+        p {
+            margin: 0 0 24px 0;      
+            text-align: center; 
+        }
+    }
+    
+} 

@@ -4,7 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { NavService } from './nav.service';
+import { NavService } from './services/nav.service';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
           if (path[path.length-1] === 'about') {
             this.activeLink = 'introduction';
           } else {
-            this.activeLink = 'projects';
+            this.activeLink = 'work';
           }
         }
         this.navService.activeLink.next(this.activeLink);
