@@ -1,0 +1,17 @@
+<div class="component-container">
+    <main>
+        <div class="about-container">
+            <div *ngIf="collapseNav">
+                <app-introduction></app-introduction>
+                <hr class="component-divider">
+                <app-background></app-background>
+            </div>
+            <router-outlet *ngIf="!collapseNav"></router-outlet>
+        </div>
+        <app-arrow-button
+            *ngIf="!collapseNav || !nextPageReroutes"
+            [text]="nextLink"
+            (click)="onClickNextPage()">
+        </app-arrow-button>
+    </main>
+</div>

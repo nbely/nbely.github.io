@@ -1,7 +1,7 @@
 <div class="page-container">
   <header>
-    <div fxLayout="row" class="header-content">
-      <div fxFlex="216px" class="hamburger-menu-title">
+    <div class="header-content">
+      <div class="hamburger-menu-title">
         <button 
           mat-button 
           class="menu-button" 
@@ -14,7 +14,7 @@
             <span class="app-title">Nick Bely</span>
         </a>
       </div>
-      <div fxFlex class="section-menu">
+      <div class="section-menu">
         <nav 
           mat-tab-nav-bar 
           *ngIf="!collapseAllNav && !collapseSectionNav" 
@@ -66,14 +66,10 @@
         </a>
     </mat-sidenav>
     <mat-sidenav-content>
-      <main>
-        <router-outlet></router-outlet>
-      </main>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
   <footer *ngIf="!collapseAllNav || !isMenuOpen">
-    <div fxLayout="row" class="header-content" fxLayoutAlign="center">
-      <p>© Nick Bely 2021</p>
-    </div>
+    <p>© Nick Bely 2023</p>
   </footer>
 </div>
