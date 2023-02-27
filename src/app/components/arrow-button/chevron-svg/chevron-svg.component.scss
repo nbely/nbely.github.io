@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .c {
     fill: none;
     stroke: dimgrey;
@@ -8,6 +10,6 @@
 
 svg:hover {
     .c {
-        stroke: #505050;
+        stroke: mat.get-color-from-palette(mat.$teal-palette, 500);
     }
 }

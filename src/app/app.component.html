@@ -1,57 +1,44 @@
 <div class="page-container">
-  <header>
-    <div class="header-content">
-      <div class="hamburger-menu-title">
-        <button 
-          mat-button 
-          class="menu-button" 
-          (click)="sidenav.toggle()">
-            <mat-icon>
-              {{ isMenuOpen ? 'menu_open' : 'menu' }}
-            </mat-icon>
-        </button>
-        <a href="#">
-            <span class="app-title">Nick Bely</span>
-        </a>
-      </div>
-      <div class="section-menu">
-        <nav 
-          mat-tab-nav-bar 
-          *ngIf="!collapseAllNav && !collapseSectionNav" 
-          [ngClass]="{removeHighlights: isMenuOpen}"
-        >
-          <a 
-            mat-tab-link
-            *ngFor="let link of navLinks"
-            (click)="onSelectRoute(link)"
-            [routerLink] = "link"
-            routerLinkActive 
-            [active]="activeLink === link"
-            [disabled]="isMenuOpen"
-          >
-            {{ link | titlecase }}
-          </a>
-        </nav>
-      </div>
-      <!-- Implement Theme-Changer later
-      <div fxFlex="34px" FxLayoutAlign="end" class="theme-changer">
-        <button 
-          mat-button 
-          class="theme-button">
-          (click)="sidenav.toggle()" (not implemented)
+  <header class="header-content">
+    <section class="hamburger-menu-title">
+      <button
+        mat-button
+        class="menu-button"
+        (click)="sidenav.toggle()">
           <mat-icon>
-            palette
+            {{ isMenuOpen ? 'menu_open' : 'menu' }}
           </mat-icon>
-        </button>
-      </div> -->
-    </div>
+      </button>
+      <a href="#">
+          <span class="app-title">Nick Bely</span>
+      </a>
+    </section>
+    <section class="section-menu">
+      <nav
+        mat-tab-nav-bar
+        *ngIf="!collapseAllNav && !collapseSectionNav"
+        [ngClass]="{removeHighlights: isMenuOpen}"
+      >
+        <a
+          mat-tab-link
+          *ngFor="let link of navLinks"
+          (click)="onSelectRoute(link)"
+          [routerLink] = "link"
+          routerLinkActive
+          [active]="activeLink === link"
+          [disabled]="isMenuOpen"
+        >
+          {{ link | titlecase }}
+        </a>
+      </nav>
+    </section>
   </header>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav 
-      #sidenav 
-      autoFocus="false" 
-      mode="push" 
-      [(opened)]="isMenuOpen" 
+    <mat-sidenav
+      #sidenav
+      autoFocus="false"
+      mode="push"
+      [(opened)]="isMenuOpen"
       class="sidenav"
       (click)="onSidenavClick()"
       [ngClass]="{collapsedSidenav: collapseAllNav}">
