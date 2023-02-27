@@ -1,15 +1,21 @@
 <div class="component-container">
     <main>
+        <div class="button-container" *ngIf="!collapseNav">
+            <app-arrow-button
+                direction="left"
+                (click)="onClickPreviousPage()">
+            </app-arrow-button>
+        </div>
         <div class="contact-container">
             <mat-spinner *ngIf="isSubmitting" diameter="100"></mat-spinner>
             <form [formGroup]="formData" *ngIf="formData && !isSubmitting">
                 <fieldset class="form-container">
                     <legend>Let's get in touch!</legend>
-                    <section>
+                    <section class="email-name-group">
                         <mat-form-field appearance="fill" class="email-field">
                             <mat-label for="Email">Enter your email</mat-label>
                             <input matInput type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email"formControlName="email">
-                            <mat-hint id="emailHelp">I'll never share your email with anyone else.</mat-hint>                                
+                            <mat-hint id="emailHelp">I'll never share your email with anyone else.</mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="fill" class="name-field">
                             <mat-label for="fullname">Enter your full name</mat-label>
@@ -21,21 +27,23 @@
                         <textarea matInput class="comment-field" formControlName="comment" name="comment">
                         </textarea>
                     </mat-form-field>
-                    <section>
-                        <button 
-                            mat-flat-button 
-                            type="button" 
-                            [disabled]="!formData.valid" 
+                    <section class="submit-confirmation-group">
+                        <button
+                            mat-flat-button
+                            type="button"
+                            [disabled]="!formData.valid"
                             (click)="onSubmit(formData.value)">
                             Submit
                         </button>
                         <div *ngIf="formSubmitted" class="submit-received-text">
                             <p>Your message has been received!</p>
-                            <a href="https://mailthis.to/confirm">Click here for a confirmation.</a>
+                            <a href="https://mailthis.to/confirm">Click here for a confirmation</a>
                         </div>
                     </section>
                 </fieldset>
             </form>
+        </div>
+        <div class="button-container"  *ngIf="!collapseNav">
         </div>
     </main>
 </div>

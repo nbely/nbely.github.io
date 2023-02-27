@@ -14,7 +14,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   collapseNav: boolean = false;
   navLinks: string[] = ['work', 'projects'];
   nextLink: string | null = 'projects';
-  nextPageReroutes: boolean = false;
+  previousLink: string | null = 'background';
 
   private activeLinkSub: Subscription | undefined;
   private collapseSub: Subscription | undefined;
@@ -37,9 +37,11 @@ export class ExperienceComponent implements OnInit, OnDestroy {
             this.router.navigate([`/experience/${this.activeLink}`]);
             if (index < this.navLinks.length - 1) {
               this.nextLink = this.navLinks[index + 1];
+              this.previousLink = 'background';
             }
             else {
               this.nextLink = 'contact me';
+              this.previousLink = this.navLinks[index -1];
             }
           }
           if (this.collapseNav) {
@@ -75,8 +77,17 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     }
     else {
       this.router.navigate([`/contact`]);
-      this.nextPageReroutes = true;
     }
+  }
+
+  onClickPreviousPage() {
+    if (this.previousLink !== 'background') {
+      this.router.navigate([`/experience/${this.previousLink}`]);
+    }
+    else {
+      this.router.navigate([`/about/${this.previousLink}`]);
+    }
+    this.navService.activeLink.next(this.previousLink);
   }
 
   ngOnDestroy() {

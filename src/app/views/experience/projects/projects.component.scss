@@ -1,16 +1,15 @@
 .projects-container {
     display: flex;
     flex-direction: column;
-    margin: 0 5% 12px 5%;
-    min-height: 500px;
+    margin: 12px;
+    // min-height: 500px;
 
     h1 {
         color: rgba(0, 0, 0, 0.70);
         font-family: 'Roboto Slab', serif;
         font-weight: 300;
-        margin: 24px 0 12px 0;
+        margin: 0 0 12px;
         text-align: start;
-
     }
     .card-group {
         display: flex;

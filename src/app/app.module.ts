@@ -17,6 +17,7 @@ import { ContactComponent } from './views/contact/contact.component';
   ],
   imports: [
     AppRoutingModule,
+    AppSharedModule,
     AppUiModule,
     BrowserAnimationsModule,
     BrowserModule,
