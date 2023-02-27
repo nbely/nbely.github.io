@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .page-container {
     background-size: cover;
     color: #000;
@@ -9,85 +11,69 @@
         color: inherit;
         text-decoration: none;
     }
-    header {
+    .header-content {
         color: #000;
         display: flex;
+        flex-direction: row;
         font-size: 24px;
         height: 48px;
-        justify-content: space-between;
+        margin: 0 auto;
         padding: 0px 20px;
+        width: 100vw;
 
-        .header-content { 
-            display: flex;
-            flex-direction: row;
-            margin: 0 auto;
-            width: 100vw;
+        .hamburger-menu-title {
+            height: 36.5px;
+            margin: auto 0;
+            padding: 0;
+            width: 220px;
 
-            .hamburger-menu-title {
-                height: 36.5px;
-                margin: auto 0;
-                padding: 0;
-                width: 220px;
+            .app-title {
+                color: #000;
+                font-family: 'Roboto Slab', serif;
+                transition: color 0.2s linear;
 
-                .app-title {
-                    color: #000;
-                    font-family: 'Roboto Slab', serif;
-                }
-                .menu-button {
-                    background-color: inherit;
-                    color: inherit;
-                    font-size: inherit;
-                    height: 34px;
-                    line-height: normal;
-                    margin-right: 24px;
-                    min-width: 0;
-                    padding: 0;
-                    width: 34px;
-
-                    &:hover {
-                        background-color: rgba(0, 0, 0, 0.05)
-                    }
-                    .mat-icon {
-                        font-size: inherit;
-                        height: 24px;
-                        margin: 0;
-                        width: 24px;
-                    }
+                &:hover {
+                    color: mat.get-color-from-palette(mat.$teal-palette, 500);
                 }
             }
-            .section-menu {
-                .mat-mdc-tab-link {
-                    .mdc-tab__content {
-                        min-width: 100px;
-                    }
-                    .mdc-tab__text-label {
-                        font-size: 16px;
-                        font-weight: 500;
-                    }
-                }
-                .removeHighlights.mat-primary .mat-ink-bar {
-                    display: none;
-                }
-                .mat-mdc-tab-link:hover {
+            .menu-button {
+                background-color: inherit;
+                color: inherit;
+                font-size: inherit;
+                height: 34px;
+                line-height: normal;
+                margin-right: 24px;
+                min-width: 0;
+                padding: 0;
+                width: 34px;
+
+                &:hover {
                     background-color: rgba(0, 0, 0, 0.05)
                 }
+                .mat-icon {
+                    font-size: inherit;
+                    height: 24px;
+                    margin: 0;
+                    width: 24px;
+                }
             }
-            // .theme-changer {
-            //     margin: auto;
-            //     width: 34px;
-
-            //     .theme-button {
-            //         font-size: inherit;
-            //         background-color: inherit;
-            //         color: inherit;
-            //         width: 34px;
-            //         height: 34px;
-            //         margin: auto;
-            //         min-width: 0;
-            //         padding: 0 0 5px 0;
-            //         line-height: normal;
-            //     }
-            // }
+        }
+        .section-menu {
+            .mat-mdc-tab-link {
+                .mdc-tab__content {
+                    min-width: 100px;
+                }
+                .mdc-tab__text-label {
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+            .removeHighlights.mat-primary .mat-ink-bar {
+                display: none;
+            }
+            .mat-mdc-tab-link:hover {
+                background-color: rgba(0, 0, 0, 0.05)
+            }
         }
     }
     main {

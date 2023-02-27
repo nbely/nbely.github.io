@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .intro-container {
     margin: 24px;
     
@@ -27,19 +29,19 @@
         transition: width 0.1 linear;
     }
     .bolded {
-        color: rgba(0, 0, 0, 0.80);
+        color: mat.get-color-from-palette(mat.$teal-palette, 500);
         font-weight: bold;
     }
     .mat-mdc-unelevated-button {
-        background: rgba(0, 0, 0, 0.05);
+        // background: rgba(0, 0, 0, 0.05);
         border-radius: 30px;  
         font-size: 16px;
         height: 50px;
         margin-bottom: 24px;
 
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.1)
-        }
+        // &:hover {
+        //     background-color: rgba(0, 0, 0, 0.1)
+        // }
     }
     .long-button {
         width: 120px;

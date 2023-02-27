@@ -82,11 +82,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('window:resize', ['$event']) 
   onResize(): void {
-    if (window.innerWidth < 720) {
-      this.collapseAllNav = true;
-    } else {
-      this.collapseAllNav = false;
-    }
+    this.collapseAllNav = window.innerWidth < 720 ? true : false;
     this.navService.isCollapsed.next(this.collapseAllNav);
   }
 
