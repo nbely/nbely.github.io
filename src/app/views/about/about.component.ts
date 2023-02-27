@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   collapseNav: boolean = false;
   navLinks: string[] = ['introduction', 'background'];
   nextLink: string | null = 'background';
-  nextPageReroutes: boolean = false;
+  previousLink: string | null = 'introduction';
 
   private activeLinkSub: Subscription | undefined;
   private collapseSub: Subscription | undefined;
@@ -74,9 +74,13 @@ export class AboutComponent implements OnInit, OnDestroy {
     }
     else {
       this.router.navigate([`/experience/${this.nextLink}`]);
-      this.nextPageReroutes = true;
     }
     this.navService.activeLink.next(this.nextLink);
+  }
+
+  onClickPreviousPage() {
+    this.router.navigate(['/about/introduction']);
+    this.navService.activeLink.next(this.previousLink);
   }
 
   ngOnDestroy() {

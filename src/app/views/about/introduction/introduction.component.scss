@@ -1,10 +1,10 @@
 @use '@angular/material' as mat;
 
 .intro-container {
-    margin: 24px;
+    margin: 12px;
     
     h1 {
-        color: rgba(0, 0, 0, 0.70);
+        color: rgba(0, 0, 0, 0.87);
         font-family: 'Roboto Slab', serif;
         font-weight: 300;
         margin: 0 0 24px 0;
@@ -33,15 +33,10 @@
         font-weight: bold;
     }
     .mat-mdc-unelevated-button {
-        // background: rgba(0, 0, 0, 0.05);
         border-radius: 30px;  
         font-size: 16px;
         height: 50px;
         margin-bottom: 24px;
-
-        // &:hover {
-        //     background-color: rgba(0, 0, 0, 0.1)
-        // }
     }
     .long-button {
         width: 120px;
@@ -54,8 +49,6 @@
 
 @media screen and (max-width: 719px) {
     .intro-container {
-        margin: 0;
-
         .circle-image {
             height: 300px;
             width: 300px;
