@@ -5,15 +5,6 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './icon-group.component.html',
   styleUrls: ['./icon-group.component.scss']
 })
-export class IconGroupComponent implements OnInit {
+export class IconGroupComponent {
   @Input() iconList: string[] | null = [""];
-
-  constructor() { 
-    // Empty Constructor
-    console.log(this.iconList);
-  }
-
-  ngOnInit(): void {
-    console.log(this.iconList);
-  }
 }

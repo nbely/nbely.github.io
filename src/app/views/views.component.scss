@@ -7,8 +7,34 @@ hr.navbar-divider {
     border: 1px solid rgba(0, 0, 0, 0.65);
     margin: 0 0 0 0;
 }
+main {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 18px 12px;
+
+    .button-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 120px;
+
+        @media screen and (min-width: 992px) {
+            display: flex;
+        }
+        app-arrow-button {
+            margin: 0 20px;
+            width: 80px;
+            transition: width 0.2s linear;
+
+            &:hover {
+                width: 90px;
+            }
+        }
+    }
+}
 .component-container {
-    color: #000;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -33,10 +59,24 @@ hr.navbar-divider {
         }
     }
 }
-.exp-container {
+.about-container {
     border-radius: 10px;
-    max-width: 1400px;
     text-align: center;
-    z-index: 10;
     width: 100%;
+    z-index: 10;
+}
+
+/* Tablet and Desktop View */
+@media screen and (min-width: 577px) {
+    .button-container {
+        display: flex;
+    }
+
+    /* Tablet Only View */
+    @media screen and (max-width: 991px) {
+    }
+
+    /* Desktop Only View */
+    @media screen and (min-width: 992px) {
+    }
 }

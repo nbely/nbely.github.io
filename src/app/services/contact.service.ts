@@ -8,7 +8,12 @@ export class ContactService {
 
     constructor(private http: HttpClient) {}
 
-    postMessage(input: any) {
+    
+    /**
+     * @param  {any} input
+     * @returns any Returns an API response or error
+     */
+    postMessage(input: any): any {
         return this.http.post(this.api, input, { responseType: 'text' }).pipe(
             map(
                 (response: any) => {

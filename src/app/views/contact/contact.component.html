@@ -1,11 +1,5 @@
 <div class="component-container">
     <main>
-        <div class="button-container" *ngIf="!collapseNav">
-            <app-arrow-button
-                direction="left"
-                (click)="onClickPreviousPage()">
-            </app-arrow-button>
-        </div>
         <div class="contact-container">
             <mat-spinner *ngIf="isSubmitting" diameter="100"></mat-spinner>
             <form [formGroup]="formData" *ngIf="formData && !isSubmitting">
@@ -42,8 +36,6 @@
                     </section>
                 </fieldset>
             </form>
-        </div>
-        <div class="button-container"  *ngIf="!collapseNav">
         </div>
     </main>
 </div>

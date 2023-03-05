@@ -6,8 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./background.component.scss']
 })
 export class BackgroundComponent {
-
-  constructor() { 
-    // Empty Constructor
-  } 
 }
