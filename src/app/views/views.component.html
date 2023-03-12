@@ -1,20 +1,18 @@
-<div class="component-container">
-    <main>
-        <div class="button-container">
-            <app-arrow-button
-                *ngIf="previousLink"
-                direction="left"
-                (click)="onClickArrowButton(previousLink)">
-            </app-arrow-button>
-        </div>
-        <div class="about-container">
-            <router-outlet></router-outlet>
-        </div>
-        <div class="button-container">
-            <app-arrow-button
-                *ngIf="nextLink"
-                (click)="onClickArrowButton(nextLink)">
-            </app-arrow-button>
-        </div>
-    </main>
-</div>
+<main>
+    <div class="button-container">
+        <app-arrow-button
+            *ngIf="previousLink"
+            direction="left"
+            (click)="onClickArrowButton(previousLink)">
+        </app-arrow-button>
+    </div>
+    <div class="app-container">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="button-container">
+        <app-arrow-button
+            *ngIf="nextLink"
+            (click)="onClickArrowButton(nextLink)">
+        </app-arrow-button>
+    </div>
+</main>

@@ -13,7 +13,7 @@ export class ViewsComponent implements OnInit, OnDestroy {
   activeLink: string | null = null;
   isTablet: boolean = false;
   navLinks: string[] = ['introduction', 'background', 'work', 'projects', 'contact'];
-  nextLink: string | null = 'background';
+  nextLink: string | null = null;
   previousLink: string | null = null;
 
   private activeLinkSub: Subscription | undefined;

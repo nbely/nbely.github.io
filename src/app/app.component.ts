@@ -73,13 +73,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onSidenavClick(): void {
     this.isMenuOpen = false;
-    if (this.activeLink) {
-      this.navService.pushNewLink(this.activeLink);
-    }
-    if (this.navLinks && !this.activeLink) {
-      this.activeLink = this.navLinks[0];
-      this.navService.pushNewLink(this.activeLink);
-    }
   }
 
   onSelectRoute(link: string): void {
