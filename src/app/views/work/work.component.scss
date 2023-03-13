@@ -1,24 +1,18 @@
 .work-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin: 0 12px;
-    justify-content: center;
-    overflow-y: auto;
+    padding: 0 20px;
 
     h1 {
         color: rgba(0, 0, 0, 0.70);
         font-family: 'Roboto Slab', serif;
         font-weight: 300;
-        margin: 24px 0 12px;
-        text-align: start;
+        margin: 12px 0;
+        text-align: center;
     }
     .card-group {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        max-height: calc(100% - 78px);
 
         .mdc-card {
             background-color: rgba(0, 0, 0, 0.05);
@@ -27,9 +21,8 @@
             flex-wrap: wrap;
             justify-content: flex-start;
             margin: 12px 12px;
-            min-height: 250px;
+            max-width: 500px;
             text-align: start;
-            width: 400px;
     
             .mat-mdc-card-title {
                 color: rgba(0, 0, 0, 0.70);
@@ -50,6 +43,15 @@
             .status {
                 font-style: italic;
             }
+        }
+    }
+}
+
+/* Tablet and Desktop Views */
+@media screen and (min-width: 577px) {
+    .work-container {
+        h1 {
+            margin: 24px 0 12px;
         }
     }
 }

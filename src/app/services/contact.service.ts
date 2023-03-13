@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root'})
 export class ContactService {
-    private api = 'https://mailthis.to/nicholas0781';
+    private api = 'https://mailthis.to/Nick0781';
 
     constructor(private http: HttpClient) {}
 

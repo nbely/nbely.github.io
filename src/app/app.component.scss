@@ -37,12 +37,7 @@
             line-height: normal;
             min-width: 0;
             padding: 0;
-            transition: background-color 0.2s linear;
             width: 34px;
-
-            @media screen and (min-width: 577px) {
-                display: none;
-            }
 
             .mat-icon {
                 font-size: inherit;
@@ -54,14 +49,9 @@
         .mat-mdc-tab-header {
             display: none;
 
-            @media screen and (min-width: 577px) {
-                display: flex;
-            }
             .mdc-tab {
-                transition: background-color 0.2s linear;
-                @media screen and (max-width: 767px) {
-                    padding: 0 12px;
-                }
+                padding: 0 16px;
+                transition: padding 0.2s ease;
     
                 .mdc-tab__content {
                     min-width: 100px;
@@ -69,12 +59,6 @@
                 .mdc-tab__text-label {
                     font-size: 16px;
                     font-weight: 500;
-                }
-                .removeHighlights.mat-primary .mat-ink-bar {
-                    display: none;
-                }
-                .mat-mdc-tab-link:hover {
-                    background-color: rgba(0, 0, 0, 0.05)
                 }
             }
         }
@@ -123,7 +107,7 @@
     }
     footer {
         background: rgba(0, 0, 0, 0.70);
-        bottom: 0%;
+        bottom: 0;
         color: #fff;
         display: flex;
         height: 30px;
@@ -136,6 +120,33 @@
             font-size: 12px;
             margin: auto;
             text-align: center;
+        }
+    }
+}
+
+/* Tablet and Desktop Views */
+@media screen and (min-width: 577px) {
+    .page-container {
+        .app-header {
+            .mobile-hamburger-button {
+                display: none;
+            }
+            .mat-mdc-tab-header {
+                display: flex;
+            }
+        }
+    }
+
+    /* Medium Tablet Only View */
+    @media screen and (min-width: 768px) {
+        .page-container {
+            .app-header {
+                .mat-mdc-tab-header {
+                    .mdc-tab {
+                        padding: 0 24px;
+                    }
+                }
+            }
         }
     }
 }

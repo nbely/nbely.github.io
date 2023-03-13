@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.cdr.detectChanges();
     })
 
-    if (window.innerWidth < 992) {
+    if (window.innerWidth > 576 && window.innerWidth < 992) {
       this.isTablet = true;
       this.navService.isTablet.next(this.isTablet);
     }
@@ -64,15 +64,16 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @HostListener('window:resize', ['$event']) 
   onResize(): void {
     const initialTabletState = this.isTablet;
-    this.isTablet = window.innerWidth < 992 ? true : false;
+    this.isTablet = window.innerWidth > 576 && window.innerWidth < 992 ? true : false;
     if (this.isTablet !== initialTabletState) {
       this.navService.isTablet.next(this.isTablet);
       this.navService.updateNavLinks();
     }
   }
 
-  onSidenavClick(): void {
+  onSidenavClick(link: string): void {
     this.isMenuOpen = false;
+    this.onSelectRoute(link);
   }
 
   onSelectRoute(link: string): void {

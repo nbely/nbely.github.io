@@ -7,4 +7,5 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconGroupComponent {
   @Input() iconList: string[] | null = [""];
+  @Input() labels: boolean = false;
 }
