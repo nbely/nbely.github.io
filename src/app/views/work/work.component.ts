@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
 
+import { ExperienceCardModel } from 'src/app/models/exerience-card.model';
+import { workExperienceCards } from 'src/app/data/experience-cards.data';
+
 @Component({
   selector: 'app-work',
-  templateUrl: './work.component.html',
-  styleUrls: ['./work.component.scss']
+  templateUrl: './work.component.html'
 })
 export class WorkComponent {
-
-  constructor() { 
-    // Empty Constructor
-  }
-
-  onButtonClick(link: string) {
-    window.open(link, '_blank');
-  }
+  workExperienceCards: ExperienceCardModel[] = workExperienceCards;
 }

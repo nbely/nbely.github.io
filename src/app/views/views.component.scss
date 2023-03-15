@@ -25,7 +25,7 @@ main {
             margin: 0 20px;
             position: fixed;
             top: calc(50vh - 85px);
-            transition: all 0.2s ease;
+            transition: all 0.2s ease-in-out;
             width: 80px;
 
             &:hover {
@@ -46,7 +46,6 @@ main {
     /* Desktop Only View */
     @media screen and (min-width: 992px) {
         main {
-            display: flex;
             justify-content: space-between;
 
             .button-container {

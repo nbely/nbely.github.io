@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 
+import { ExperienceCardModel } from 'src/app/models/exerience-card.model';
+import { projectExperienceCards } from 'src/app/data/experience-cards.data';
+
 @Component({
   selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  templateUrl: './projects.component.html'
 })
 export class ProjectsComponent {
-
-  constructor() { }
-
-  onButtonClick(link: string) {
-    window.open(link, '_blank');
-  }
+  projectExperienceCards: ExperienceCardModel[] = projectExperienceCards;
 }

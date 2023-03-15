@@ -1,4 +1,7 @@
-.work-container {
+@use '@angular/material' as mat;
+
+.experience-container {
+    overflow: hidden;
     padding: 0 20px;
 
     h1 {
@@ -6,7 +9,7 @@
         font-family: 'Roboto Slab', serif;
         font-weight: 300;
         margin: 12px 0;
-        text-align: center;
+        text-align: start;
     }
     .card-group {
         display: flex;
@@ -16,16 +19,31 @@
 
         .mdc-card {
             background-color: rgba(0, 0, 0, 0.05);
+            color: rgba(0, 0, 0, 0.70);
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
             justify-content: flex-start;
-            margin: 12px 12px;
+            margin: 12px;
             max-width: 500px;
+            position: relative;
             text-align: start;
-    
+            transition: all 0.2s ease-in-out;
+
+            .card-header-image {
+                background-image: url('../../../assets/Nexient-Icon.jpeg');
+                background-size: contain;
+                border: 1px solid transparent;
+            }
             .mat-mdc-card-title {
                 color: rgba(0, 0, 0, 0.70);
+            }
+            .card-content {
+                display: block;
+            }
+            .card-hover-content {
+                display: none;
+                position: absolute;
             }
             .mat-mdc-card-content {
                 color: rgba(0, 0, 0, 0.75);
@@ -36,12 +54,23 @@
             .mat-mdc-card-actions {
                 margin: 0;
 
-                .mat-mdc-button:hover {
-                    background-color: rgba(0, 0, 0, 0.05)
+                .mat-mdc-button {
+                    transition: background-color 0.2s ease-in-out;
+                    
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.05);
+                    }
                 }
             }
             .status {
                 font-style: italic;
+            }
+            &:hover {
+                background-color: mat.get-color-from-palette(mat.$teal-palette, 200);
+
+                // .card-header-image {
+                //     border: 1px solid #fff;
+                // }
             }
         }
     }
@@ -49,9 +78,10 @@
 
 /* Tablet and Desktop Views */
 @media screen and (min-width: 577px) {
-    .work-container {
+    .experience-container {
         h1 {
             margin: 24px 0 12px;
+            text-align: center;
         }
     }
 }

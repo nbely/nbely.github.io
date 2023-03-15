@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-icon-group',
@@ -6,6 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./icon-group.component.scss']
 })
 export class IconGroupComponent {
-  @Input() iconList: string[] | null = [""];
-  @Input() labels: boolean = false;
+  @Input() iconList: string[] | undefined = [""];
+  @Input() labels: boolean | undefined = false;
 }

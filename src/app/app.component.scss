@@ -23,21 +23,26 @@
         .app-title {
             font-family: 'Roboto Slab', serif;
             margin: 0 24px;
-            transition: color 0.2s linear;
+            transition: color 0.2s ease-in-out;
 
             &:hover {
                 color: mat.get-color-from-palette(mat.$teal-palette, 500);
             }
         }
-        .mobile-hamburger-button {
-            background-color: inherit;
+        .mat-mdc-button {
+            --mat-mdc-button-persistent-ripple-color: #fff;
             color: inherit;
             font-size: inherit;
             height: 34px;
             line-height: normal;
             min-width: 0;
             padding: 0;
+            transition: color 0.2s ease-in-out;
             width: 34px;
+
+            &:hover {
+                color: mat.get-color-from-palette(mat.$teal-palette, 500)
+            }
 
             .mat-icon {
                 font-size: inherit;
@@ -51,7 +56,7 @@
 
             .mdc-tab {
                 padding: 0 16px;
-                transition: padding 0.2s ease;
+                transition: all 0.2s ease-in-out;
     
                 .mdc-tab__content {
                     min-width: 100px;
@@ -79,7 +84,7 @@
                 height: 60px;
                 padding: 12px 24px;
                 text-align: left;
-                transition: background-color 0.2s linear;
+                transition: background-color 0.2s ease-in-out;
                 width: 100%;
             
                 .mdc-button__label {

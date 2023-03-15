@@ -29,17 +29,27 @@
         margin: 12px;
         object-fit: cover;
         width: 275px;
-        transition: height 0.2s ease;
+        transition: all 0.2s ease-in-out;
     }
     .bolded {
         color: mat.get-color-from-palette(mat.$teal-palette, 500);
         font-weight: bold;
     }
     .mat-mdc-unelevated-button {
+        background-color: #fff;
+        border: 2px solid mat.get-color-from-palette(mat.$teal-palette, 500);
         border-radius: 30px;
+        color: mat.get-color-from-palette(mat.$teal-palette, 500);
         font-size: 16px;
+        font-weight: 600;
         height: 50px;
         margin: 12px 6px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: mat.get-color-from-palette(mat.$teal-palette, 500);
+            color: #fff;
+        }
     }
     .button-group {
         display: flex;
