@@ -26,7 +26,7 @@
                 </ul>
             </mat-card-content>
             <mat-card-actions *ngIf="(card.actionLinks && card.actionLinksText) || card.isModalButtonEnabled">
-                <button *ngIf="card.isModalButtonEnabled" mat-button (click)="openDialog('100ms', '100ms')">{{ card.modalButtonText }}</button>
+                <button *ngIf="card.isModalButtonEnabled && card.modalDetails" mat-button (click)="openDialog(card, '100ms', '100ms')">{{ card.modalButtonText }}</button>
                 <ng-container *ngIf="card.actionLinks && card.actionLinksText">
                     <button *ngFor="let link of card.actionLinks; let i = index" mat-button (click)="onButtonClick(link)">{{ card.actionLinksText[i] || "" }}</button>
                 </ng-container>

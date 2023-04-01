@@ -23,13 +23,16 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: space-between;
             margin: 12px;
             max-width: 500px;
             position: relative;
             text-align: start;
             transition: all 0.2s ease-in-out;
 
+            &:hover {
+                background-color: mat.get-color-from-palette(mat.$teal-palette, 200);
+            }
             .card-header-image {
                 background-image: url('../../../assets/Nexient-Icon.jpeg');
                 background-size: contain;
@@ -37,13 +40,6 @@
             }
             .mat-mdc-card-title {
                 color: rgba(0, 0, 0, 0.70);
-            }
-            .card-content {
-                display: block;
-            }
-            .card-hover-content {
-                display: none;
-                position: absolute;
             }
             .mat-mdc-card-content {
                 color: rgba(0, 0, 0, 0.75);
@@ -64,13 +60,6 @@
             }
             .status {
                 font-style: italic;
-            }
-            &:hover {
-                background-color: mat.get-color-from-palette(mat.$teal-palette, 200);
-
-                // .card-header-image {
-                //     border: 1px solid #fff;
-                // }
             }
         }
     }

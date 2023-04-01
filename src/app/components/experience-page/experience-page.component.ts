@@ -19,9 +19,11 @@ export class ExperiencePageComponent {
         window.open(link, '_blank');
     }
 
-    openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    openDialog(card: ExperienceCardModel, enterAnimationDuration: string, exitAnimationDuration: string): void {
         this.dialog.open(ExperienceDialogComponent, {
-          width: '250px',
+          data: {
+            card
+          },
           enterAnimationDuration,
           exitAnimationDuration,
         });
