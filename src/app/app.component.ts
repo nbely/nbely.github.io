@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ import { NavService } from './services/nav.service';
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public isMenuOpen: boolean = false;
   activeLink: string | null = null;
-  isTablet: boolean = true;
+  deviceType: string = "mobile";
   navLinks: string[] = [];
 
   private activeLinkSub: Subscription | undefined;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   private sidenavOpenedSub: Subscription | undefined;
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav | undefined;
 
-  constructor(private navService: NavService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private navService: NavService, private router: Router) {}
   
   ngOnInit(): void {
     this.router.events
@@ -36,44 +36,47 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.navLinksSub = this.navService.navLinks.subscribe(navLinks => {
       this.navLinks = navLinks;
-      this.cdr.detectChanges();
     });
 
     this.activeLinkSub = this.navService.activeLink.subscribe(link => {
       this.activeLink = link;
-      this.cdr.detectChanges();
     })
 
-    if (window.innerWidth > 576 && window.innerWidth < 992) {
-      this.isTablet = true;
-      this.navService.isTablet.next(this.isTablet);
-    }
+    this.setDeviceType();
   }
 
   ngAfterViewInit(): void {
     if (this.sidenav) {
-      this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
-        this.isMenuOpen = true;
-      })
       this.sidenavClosedSub = this.sidenav.closedStart.subscribe(() => {
         this.isMenuOpen = false;
       })
+      this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
+        this.isMenuOpen = true;
+      })
+    }
+  }
+
+  setDeviceType(): void {
+    const initialDeviceType: string = this.deviceType;
+    if (window.innerWidth > 992) {
+      this.deviceType = "desktop"; 
+    } else if (window.innerWidth > 576) {
+      this.deviceType = "tablet";
+    } else {
+      this.deviceType = "mobile";
+    }
+    if (this.deviceType !== initialDeviceType) {
+      this.navService.deviceType.next(this.deviceType);
     }
   }
 
   @HostListener('window:resize', ['$event']) 
   onResize(): void {
-    const initialTabletState = this.isTablet;
-    this.isTablet = window.innerWidth > 576 && window.innerWidth < 992 ? true : false;
-    if (this.isTablet !== initialTabletState) {
-      this.navService.isTablet.next(this.isTablet);
+    const initialDeviceType: string = this.deviceType;
+    this.setDeviceType();
+    if (this.deviceType !== initialDeviceType) {
       this.navService.updateNavLinks();
     }
-  }
-
-  onSidenavClick(link: string): void {
-    this.isMenuOpen = false;
-    this.onSelectRoute(link);
   }
 
   onSelectRoute(link: string): void {
@@ -81,10 +84,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.navService.pushNewLink(this.activeLink);
   }
 
+  onSidenavClick(link: string): void {
+    this.isMenuOpen = false;
+    this.onSelectRoute(link);
+  }
+
   ngOnDestroy(): void {
-    this.navLinksSub && this.navLinksSub.unsubscribe();
     this.activeLinkSub && this.activeLinkSub.unsubscribe();
-    this.sidenavOpenedSub && this.sidenavOpenedSub.unsubscribe();
+    this.navLinksSub && this.navLinksSub.unsubscribe();
     this.sidenavClosedSub && this.sidenavClosedSub.unsubscribe();
+    this.sidenavOpenedSub && this.sidenavOpenedSub.unsubscribe();
   }
 }

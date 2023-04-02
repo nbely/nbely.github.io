@@ -2,59 +2,71 @@
     <div *ngFor="let icon of iconList">
         <div [ngSwitch]="icon">
             <div *ngSwitchCase="'accessibility'">
-                <i class="fas fa-universal-access fa-3x"></i>
+                <i aria-label="accessibility icon" class="fas fa-universal-access fa-3x"></i>
                 <p *ngIf="labels">Accessibility</p>
             </div>
             <div *ngSwitchCase="'angular'">
-                <i class="fab fa-angular fa-3x"></i>
+                <i aria-label="angular icon" class="fab fa-angular fa-3x"></i>
                 <p *ngIf="labels">Angular</p>
+            </div>
+            <div *ngSwitchCase="'aws'">
+                <i aria-label="aws icon" class="fab fa-aws fa-3x"></i>
+                <p *ngIf="labels">AWS Cloud</p>
             </div>
             <div *ngSwitchCase="'azure'">
                 <img class="svg-icons" alt="azure icon" src="../../../assets/azure.svg">
                 <p *ngIf="labels">Azure</p>
             </div>
+            <div *ngSwitchCase="'confluence'">
+                <i aria-label="confluence icon" class="fab fa-confluence fa-3x"></i>
+                <p *ngIf="labels">Confluence</p>
+            </div>
             <div *ngSwitchCase="'css3'">
-                <i class="fab fa-css3-alt fa-3x"></i>
+                <i aria-label="CSS3 icon" class="fab fa-css3-alt fa-3x"></i>
                 <p *ngIf="labels">CSS</p>
+            </div>
+            <div *ngSwitchCase="'discord'">
+                <i aria-label="discord API icon" class="fab fa-discord fa-3x"></i>
+                <p *ngIf="labels">Discord API</p>
             </div>
             <div *ngSwitchCase="'firebase'">
                 <img class="svg-icons" alt="firebase icon" src="../../../assets/firebase.svg">
                 <p *ngIf="labels">Firebase</p>
             </div>
             <div *ngSwitchCase="'github'">
-                <i class="fab fa-github fa-3x"></i>
+                <i aria-label="github icon" class="fab fa-github fa-3x"></i>
                 <p *ngIf="labels">Github</p>
             </div>
             <div *ngSwitchCase="'html5'">
-                <i class="fab fa-html5 fa-3x"></i>
+                <i aria-label="HTML5 icon" class="fab fa-html5 fa-3x"></i>
                 <p *ngIf="labels">HTML</p>
             </div>
             <div *ngSwitchCase="'java'">
-                <i class="fab fa-java fa-3x"></i>
+                <i aria-label="java icon" class="fab fa-java fa-3x"></i>
                 <p *ngIf="labels">Java</p>
             </div>
             <div *ngSwitchCase="'javascript'">
-                <i class="fab fa-js fa-3x"></i>
+                <i aria-label="javascript icon" class="fab fa-js fa-3x"></i>
                 <p *ngIf="labels">Javascript</p>
             </div>
             <div *ngSwitchCase="'jira'">
-                <i class="fab fa-jira fa-3x"></i>
+                <i aria-label="jira icon" class="fab fa-jira fa-3x"></i>
                 <p *ngIf="labels">Jira</p>
             </div>
             <div *ngSwitchCase="'nodejs'">
-                <i class="fab fa-node-js fa-3x"></i>
+                <i aria-label="node.js icon" class="fab fa-node-js fa-3x"></i>
                 <p *ngIf="labels">Node.js</p>
             </div>
             <div *ngSwitchCase="'python'">
-                <i class="fab fa-python fa-3x"></i>
+                <i aria-label="python icon" class="fab fa-python fa-3x"></i>
                 <p *ngIf="labels">Python</p>
             </div>
             <div *ngSwitchCase="'react'">
-                <i class="fab fa-react fa-3x"></i>
+                <i aria-label="react icon" class="fab fa-react fa-3x"></i>
                 <p *ngIf="labels">React</p>
             </div>
             <div *ngSwitchCase="'sass'">
-                <i class="fab fa-sass fa-3x"></i>
+                <i aria-label="sass icon" class="fab fa-sass fa-3x"></i>
                 <p *ngIf="labels">Sass</p>
             </div>
             <div *ngSwitchCase="'typescript'">
@@ -62,7 +74,7 @@
                 <p *ngIf="labels">Typescript</p>
             </div>
             <div *ngSwitchCase="'vue'">
-                <i class="fab fa-vuejs fa-3x"></i>
+                <i aria-label="vue icon" class="fab fa-vuejs fa-3x"></i>
                 <p *ngIf="labels">Vue</p>
             </div>
         </div>

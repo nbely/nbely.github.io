@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 export class NavService {
     private fullNavLinks: string[] = ['introduction', 'background', 'work', 'projects', 'contact'];
     public activeLink = new BehaviorSubject<string>('introduction');
-    public isTablet = new BehaviorSubject<boolean>(false);
+    public deviceType = new BehaviorSubject<string>('mobile');
     public navLinks = new BehaviorSubject<string[]>(this.fullNavLinks);
 
     /**
@@ -24,7 +24,7 @@ export class NavService {
      * @returns void
      */
     updateNavLinks(): void {
-        if (this.isTablet.value) {
+        if (this.deviceType.value === "tablet") {
             let centerIndex = this.fullNavLinks.indexOf(this.activeLink.value);
             if (this.fullNavLinks.length > 3) {
                 centerIndex === 0 && centerIndex++;

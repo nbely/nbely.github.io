@@ -1,14 +1,12 @@
-@use '@angular/material' as mat;
-
 .experience-container {
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 10px;
 
     h1 {
         color: rgba(0, 0, 0, 0.70);
         font-family: 'Roboto Slab', serif;
         font-weight: 300;
-        margin: 12px 0;
+        margin: 12px 0 12px 12px;
         text-align: start;
     }
     .card-group {
@@ -16,52 +14,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-
-        .mdc-card {
-            background-color: rgba(0, 0, 0, 0.05);
-            color: rgba(0, 0, 0, 0.70);
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 12px;
-            max-width: 500px;
-            position: relative;
-            text-align: start;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                background-color: mat.get-color-from-palette(mat.$teal-palette, 200);
-            }
-            .card-header-image {
-                background-image: url('../../../assets/Nexient-Icon.jpeg');
-                background-size: contain;
-                border: 1px solid transparent;
-            }
-            .mat-mdc-card-title {
-                color: rgba(0, 0, 0, 0.70);
-            }
-            .mat-mdc-card-content {
-                color: rgba(0, 0, 0, 0.75);
-                font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                font-size: medium;
-                margin: 0 0 12px 0;
-            }
-            .mat-mdc-card-actions {
-                margin: 0;
-
-                .mat-mdc-button {
-                    transition: background-color 0.2s ease-in-out;
-                    
-                    &:hover {
-                        background-color: rgba(0, 0, 0, 0.05);
-                    }
-                }
-            }
-            .status {
-                font-style: italic;
-            }
-        }
     }
 }
 

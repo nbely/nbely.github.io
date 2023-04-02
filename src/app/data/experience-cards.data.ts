@@ -10,7 +10,8 @@ export const workExperienceCards: ExperienceCardModel[] = [
             "html5",
             "sass",
             "java",
-            "azure"
+            "azure",
+            "accessibility"
         ],
         isIconGroupLabeled: true,
         isModalButtonEnabled: true,
@@ -35,7 +36,8 @@ export const workExperienceCards: ExperienceCardModel[] = [
             "sass",
             "java",
             "github",
-            "jira"
+            "jira",
+            "confluence"
         ],
         isIconGroupLabeled: true,
         isModalButtonEnabled: true,
@@ -58,6 +60,7 @@ export const projectExperienceCards: ExperienceCardModel[] = [
             "https://github.com/nbely/nbely.github.io"
         ],
         actionLinksText: ["REPO"],
+        description: "The simple yet elegant site you see before you, continuously being improved with the skills and best practices I pick up in my career.",
         skillIcons: [
             "angular",
             "typescript",
@@ -66,7 +69,6 @@ export const projectExperienceCards: ExperienceCardModel[] = [
         ],
         isIconGroupLabeled: true,
         details: [
-            "The simple yet elegant site you see before you.",
             "Demonstrates mobile-first, responsive Sass design for mobile, tablet, and destop devices, in addition to WCAG 2.1 Compliance for ADA accessibility.",
             "Implements and adapts UI components from the Angular Material.io Component library, leaning into best practices for component reusability."
         ],
@@ -79,6 +81,7 @@ export const projectExperienceCards: ExperienceCardModel[] = [
             "https://github.com/epsilon-beta-ot-developers/theta-tau-rent-portal"
         ],
         actionLinksText: ["REPO"],
+        description: "A PayPal API-integrated application to onboard new tenants and provide easy access to viewing of account balance and payment of rent invoices.",
         skillIcons: [
             "react",
             "typescript",
@@ -87,26 +90,27 @@ export const projectExperienceCards: ExperienceCardModel[] = [
         ],
         isIconGroupLabeled: true,
         details: [
-            "As Treasurer of a non-profit housing corporation, designing and developing a PayPal API-integrated application to onboard new tenants and provide easy access to viewing of account balance and payment of rent invoices.",
-            "Leading front-end efforts utilizing Vite-tool React/TypeScript. Supporting back-end mongoDB access via PyFlask and receiving and reporting of PayPal events via AWS Lambda Functions and the Simple Queue Service.",
+            "Leading front-end efforts utilizing Vite-tool React/TypeScript with the Bootstrap Component Library to create a responsive and accesible user-facing experience.",
+            "Supporting back-end mongoDB access via PyFlask and receiving and reporting of PayPal events via AWS Lambda Functions and the Simple Queue Service.",
         ],
         subtitle: "React Web App w/ PyFlask Backend & AWS Integration",
         status: "In Progress",
         title: "Epsilon Beta Rent Portal"
     },
     {
-        actionLinks: ["https://github.com/nbely/turq-bot"],
+        actionLinks: ["https://github.com/nbely/pokesandbox"],
         actionLinksText: ["REPO"],
+        description: "A fan-game-creating and running engine being built in node.js with user interfacing by way of a Discord-API integrated Bot. React web-app being developed for server/game discovery and user profile viewing.",
         skillIcons: [
-            "react",
-            "typescript",
-            "html5",
             "nodejs",
+            "discord",
+            "react",
+            "typescript"
         ],
         isIconGroupLabeled: true,
         details: [
-            "Developing full-scale fan-game in Node.js via Discord API, utilizing MongoDB game/user data storage w/Mongoose and parsed data stream results from a forked 3rd party battle simulator",
-            "Working on React web application for displaying user profiles and interactable/customizable user event-logs"
+            "Utilizing MongoDB for game/user data storage w/Mongoose Library and parsed data stream results from a forked 3rd party battle simulator for gameplay events.",
+            "Serving MongoDB data to React web-app with Express.JS for displaying user profiles and interactable/customizable user adventure-logs and character blogging."
         ],
         subtitle: "Node.js Discord Bot & React Web App",
         status: "In Progress",
@@ -118,16 +122,17 @@ export const projectExperienceCards: ExperienceCardModel[] = [
             "https://github.com/nbely/angular-proj-recipe-book"
         ],
         actionLinksText: ["LIVE", "REPO"],
+        description: "An Angular Recipe Book and Shopping List app built as part of a Udemy course project, and featuring user data authentication and fetching from Firebase.",
         skillIcons: [
             "angular",
             "typescript",
-            "html5",
+            "firebase",
             "sass",
         ],
         isIconGroupLabeled: true,
         details: [
-            "Completed course project demonstration fundamental and advanced knowledge and practice of Angular concepts, user interface design with Bootstrap, and firebase deployment",
-            "ained understanding of and ability to create and utilize modules, components, directives, routing, observables, forms, pipes, https requests, and user authentication"
+            "Completed course project demonstrating fundamental and advanced knowledge and practice of Angular concepts, user interface design with Bootstrap CSS cklasses, and firebase deployment",
+            "Gained understanding of and ability to create and utilize modules, components, directives, routing, observables, forms, pipes, https requests, and user authentication"
         ],
         subtitle: "Angular Web App",
         status: "Completed",

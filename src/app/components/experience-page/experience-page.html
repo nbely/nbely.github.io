@@ -1,37 +1,7 @@
 <div class="experience-container">
     <h1>{{ headerText }}</h1>
     <div class="card-group">
-        <mat-card *ngFor="let card of experienceCards" class="experience-card">
-            <mat-card-header *ngIf="card.avatarClass || card.title || card.subtitle || card.position">
-                <div *ngIf="card.avatarClass" mat-card-avatar class="card-header-image"></div>
-                <mat-card-title *ngIf="card.title || card.position">
-                    <span *ngIf="card.title">{{ card.title }}</span>
-                    <span *ngIf="card.title && card.position"> - </span>
-                    <span *ngIf="card.position">{{ card.position }}</span>
-                </mat-card-title>
-                <mat-card-subtitle *ngIf="card.subtitle">{{ card.subtitle }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content *ngIf="card.status" class="status">
-                Status: {{ card.status }}
-            </mat-card-content>
-            <mat-card-content *ngIf="card.description">
-                <p>{{ card.description }}</p>
-            </mat-card-content>
-            <mat-card-content *ngIf="card.skillIcons || card.isIconGroupLabeled">
-                <app-icon-group [labels]="card.isIconGroupLabeled" [iconList]="card.skillIcons"></app-icon-group>
-            </mat-card-content>
-            <mat-card-content *ngIf="card.details">
-                <ul>
-                    <li *ngFor="let detail of card.details">{{ detail }}</li>
-                </ul>
-            </mat-card-content>
-            <mat-card-actions *ngIf="(card.actionLinks && card.actionLinksText) || card.isModalButtonEnabled">
-                <button *ngIf="card.isModalButtonEnabled && card.modalDetails" mat-button (click)="openDialog(card, '100ms', '100ms')">{{ card.modalButtonText }}</button>
-                <ng-container *ngIf="card.actionLinks && card.actionLinksText">
-                    <button *ngFor="let link of card.actionLinks; let i = index" mat-button (click)="onButtonClick(link)">{{ card.actionLinksText[i] || "" }}</button>
-                </ng-container>
-            </mat-card-actions>
-        </mat-card>
+        <app-experience-card *ngFor="let experienceCard of experienceCards" [card]="experienceCard"></app-experience-card>
     </div>
 </div>
 
