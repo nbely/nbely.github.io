@@ -1,0 +1,28 @@
+.experience-container {
+    overflow: hidden;
+    padding: 0 10px;
+
+    h1 {
+        color: rgba(0, 0, 0, 0.70);
+        font-family: 'Roboto Slab', serif;
+        font-weight: 300;
+        margin: 12px 0 12px 12px;
+        text-align: start;
+    }
+    .card-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Tablet and Desktop Views */
+@media screen and (min-width: 577px) {
+    .experience-container {
+        h1 {
+            margin: 24px 0 12px;
+            text-align: center;
+        }
+    }
+}

@@ -1,10 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { NavService } from './nav.service';
+import { NavService } from './services/nav.service';
 
 @Component({
   selector: 'app-root',
@@ -15,18 +15,17 @@ import { NavService } from './nav.service';
 
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public isMenuOpen: boolean = false;
-  collapseAllNav: boolean = false;
-  collapseSectionNav: boolean = false;
-  navLinks: string[] = [];
   activeLink: string | null = null;
+  deviceType: string = "mobile";
+  navLinks: string[] = [];
 
-  private navLinksSub: Subscription | undefined;
   private activeLinkSub: Subscription | undefined;
-  private sidenavOpenedSub: Subscription | undefined;
+  private navLinksSub: Subscription | undefined;
   private sidenavClosedSub: Subscription | undefined ;
+  private sidenavOpenedSub: Subscription | undefined;
   @ViewChild('sidenav', { static: false }) sidenav: MatSidenav | undefined;
 
-  constructor(private navService: NavService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private navService: NavService, private router: Router) {}
   
   ngOnInit(): void {
     this.router.events
@@ -35,69 +34,48 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         document.querySelector('.mat-sidenav-content')!.scrollTop = 0;
       })
 
-    this.navLinksSub = this.navService.navLinks.subscribe(links => {
-      if (links) {
-        this.collapseSectionNav = false;
-        this.navLinks = links;
-        const path = this.router.url.split('/');
-        if (path.length > 2) {
-          this.activeLink = path[path.length-1];
-        } else {
-          if (path[path.length-1] === 'about') {
-            this.activeLink = 'introduction';
-          } else {
-            this.activeLink = 'projects';
-          }
-        }
-        this.navService.activeLink.next(this.activeLink);
-      }
-      else {
-        this.collapseSectionNav = true;
-      }
-      this.cdr.detectChanges();
+    this.navLinksSub = this.navService.navLinks.subscribe(navLinks => {
+      this.navLinks = navLinks;
     });
 
     this.activeLinkSub = this.navService.activeLink.subscribe(link => {
-      if (link) {
-        this.activeLink = link;
-      }
+      this.activeLink = link;
     })
 
-    if (window.innerWidth < 720) {
-      this.collapseAllNav = true;
-      this.navService.isCollapsed.next(this.collapseAllNav);
-    }
+    this.setDeviceType();
   }
 
   ngAfterViewInit(): void {
     if (this.sidenav) {
-      this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
-        this.isMenuOpen = true;
-      })
       this.sidenavClosedSub = this.sidenav.closedStart.subscribe(() => {
         this.isMenuOpen = false;
       })
+      this.sidenavOpenedSub = this.sidenav.openedStart.subscribe(() => {
+        this.isMenuOpen = true;
+      })
+    }
+  }
+
+  setDeviceType(): void {
+    const initialDeviceType: string = this.deviceType;
+    if (window.innerWidth > 992) {
+      this.deviceType = "desktop"; 
+    } else if (window.innerWidth > 576) {
+      this.deviceType = "tablet";
+    } else {
+      this.deviceType = "mobile";
+    }
+    if (this.deviceType !== initialDeviceType) {
+      this.navService.deviceType.next(this.deviceType);
     }
   }
 
   @HostListener('window:resize', ['$event']) 
   onResize(): void {
-    if (window.innerWidth <= 719) {
-      this.collapseAllNav = true;
-    } else {
-      this.collapseAllNav = false;
-    }
-    this.navService.isCollapsed.next(this.collapseAllNav);
-  }
-
-  onSidenavClick(): void {
-    this.isMenuOpen = false;
-    if (this.activeLink) {
-      this.navService.pushNewLink(this.activeLink);
-    }
-    if (this.navLinks && !this.activeLink) {
-      this.activeLink = this.navLinks[0];
-      this.navService.pushNewLink(this.activeLink);
+    const initialDeviceType: string = this.deviceType;
+    this.setDeviceType();
+    if (this.deviceType !== initialDeviceType) {
+      this.navService.updateNavLinks();
     }
   }
 
@@ -106,10 +84,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.navService.pushNewLink(this.activeLink);
   }
 
+  onSidenavClick(link: string): void {
+    this.isMenuOpen = false;
+    this.onSelectRoute(link);
+  }
+
   ngOnDestroy(): void {
-    if (this.navLinksSub) this.navLinksSub.unsubscribe();
-    if (this.activeLinkSub) this.activeLinkSub.unsubscribe();
-    if (this.sidenavOpenedSub) this.sidenavOpenedSub.unsubscribe();
-    if (this.sidenavClosedSub) this.sidenavClosedSub.unsubscribe();
+    this.activeLinkSub && this.activeLinkSub.unsubscribe();
+    this.navLinksSub && this.navLinksSub.unsubscribe();
+    this.sidenavClosedSub && this.sidenavClosedSub.unsubscribe();
+    this.sidenavOpenedSub && this.sidenavOpenedSub.unsubscribe();
   }
 }

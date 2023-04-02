@@ -1,0 +1,9 @@
+.next-page-button {
+    height: fit-content;
+    padding: 0;
+    position: relative;
+    animation-name: button-hover;
+    animation-duration: 0.5s;
+    width: fit-content;
+    --mat-mdc-button-persistent-ripple-color: #fff;
+} 

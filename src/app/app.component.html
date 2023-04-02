@@ -1,79 +1,62 @@
 <div class="page-container">
-  <header>
-    <div fxLayout="row" class="header-content">
-      <div fxFlex="216px" class="hamburger-menu-title">
-        <button 
-          mat-button 
-          class="menu-button" 
-          (click)="sidenav.toggle()">
-            <mat-icon>
-              {{ isMenuOpen ? 'menu_open' : 'menu' }}
-            </mat-icon>
-        </button>
-        <a href="#">
-            <span class="app-title">Nick Bely</span>
-        </a>
-      </div>
-      <div fxFlex class="section-menu">
-        <nav 
-          mat-tab-nav-bar 
-          *ngIf="!collapseAllNav && !collapseSectionNav" 
-          [ngClass]="{removeHighlights: isMenuOpen}"
-        >
-          <a 
-            mat-tab-link
-            *ngFor="let link of navLinks"
-            (click)="onSelectRoute(link)"
-            [routerLink] = "link"
-            routerLinkActive 
-            [active]="activeLink === link"
-            [disabled]="isMenuOpen"
-          >
-            {{ link | titlecase }}
-          </a>
-        </nav>
-      </div>
-      <!-- Implement Theme-Changer later
-      <div fxFlex="34px" FxLayoutAlign="end" class="theme-changer">
-        <button 
-          mat-button 
-          class="theme-button">
-          (click)="sidenav.toggle()" (not implemented)
-          <mat-icon>
-            palette
-          </mat-icon>
-        </button>
-      </div> -->
-    </div>
+  <header class="app-header">
+    <button
+      mat-button
+      class="mobile-hamburger-button"
+      (click)="sidenav.toggle()">
+        <mat-icon>
+          {{ isMenuOpen ? 'menu_open' : 'menu' }}
+        </mat-icon>
+    </button>
+    <a class="app-title" href="#">Nick Bely</a>
+    <nav
+      mat-tab-nav-bar
+      [ngClass]="{removeHighlights: isMenuOpen}"
+      [tabPanel]="tabPanel"
+    >
+      <a
+        mat-tab-link
+        *ngFor="let link of navLinks"
+        (click)="onSelectRoute(link)"
+        [routerLink] = "link"
+        routerLinkActive
+        [active]="activeLink === link"
+        [disabled]="isMenuOpen"
+      >
+        {{ link | titlecase }}
+      </a>
+    </nav>
   </header>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav 
-      #sidenav 
-      autoFocus="false" 
-      mode="push" 
-      [(opened)]="isMenuOpen" 
-      class="sidenav"
-      (click)="onSidenavClick()"
-      [ngClass]="{collapsedSidenav: collapseAllNav}">
-        <a mat-button routerLink="/about">
-          <mat-icon class="nav-icon">person</mat-icon> About
+    <mat-sidenav
+      #sidenav
+      autoFocus="false"
+      mode="push"
+      [(opened)]="isMenuOpen"
+      class="sidenav">
+        <a mat-button (click)="onSidenavClick('introduction')">
+          <mat-icon class="nav-icon">person</mat-icon> About Me
         </a>
-        <a mat-button routerLink="/experience">
-          <mat-icon class="nav-icon">business_center</mat-icon> Experience
+        <a mat-button (click)="onSidenavClick('background')">
+          <mat-icon class="nav-icon">fingerprint</mat-icon> Background
         </a>
-        <a mat-button routerLink="/contact">
+        <a mat-button (click)="onSidenavClick('work')">
+          <mat-icon class="nav-icon">business_center</mat-icon> Work
+        </a>
+        <a mat-button (click)="onSidenavClick('projects')">
+          <mat-icon class="nav-icon">assignment</mat-icon> Projects
+        </a>
+        <a mat-button (click)="onSidenavClick('contact')">
           <mat-icon class="nav-icon">email</mat-icon> Contact Me
         </a>
     </mat-sidenav>
     <mat-sidenav-content>
-      <main>
+      <mat-tab-nav-panel #tabPanel>
         <router-outlet></router-outlet>
-      </main>
+      </mat-tab-nav-panel>
+      <footer *ngIf="!isMenuOpen">
+        <p>© Nick Bely 2023</p>
+      </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <footer *ngIf="!collapseAllNav || !isMenuOpen">
-    <div fxLayout="row" class="header-content" fxLayoutAlign="center">
-      <p>© Nick Bely 2021</p>
-    </div>
-  </footer>
 </div>

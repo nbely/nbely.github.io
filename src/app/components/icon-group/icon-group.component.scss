@@ -1,0 +1,25 @@
+.skills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    div {
+        text-align: center;
+        width: 110px;
+
+        p {
+            margin: 4px 0 12px 0;      
+        }
+        .fab, .fas, .fa-brands {
+            color: rgba(0, 0, 0, 0.75);
+            margin-top: 12px;
+        }
+        .svg-icons {
+            height: 48px;
+            margin-bottom: -4px;
+            margin-top: 12px;
+            width: 42px;
+        }
+    }
+} 

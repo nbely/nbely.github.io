@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+.c {
+    fill: none;
+    stroke: dimgrey;
+    stroke-linecap: butt;
+    stroke-linejoin: arcs;
+    transition: stroke 0.2s linear;
+}
+
+svg:hover {
+    .c {
+        stroke: mat.get-color-from-palette(mat.$teal-palette, 700);
+    }
+}

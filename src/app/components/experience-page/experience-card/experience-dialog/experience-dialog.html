@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>
+  <span *ngIf="data.card.position">{{ data.card.position }} @</span>
+  {{ data.card.title }}
+  <br />
+  <span class="mat-dialog-subtitle" *ngIf="data.card.subtitle">{{ data.card.subtitle }}</span>
+</h1>
+<div mat-dialog-content *ngIf="data.card.modalDetails">
+  <p *ngFor="let detail of data.card.modalDetails" [innerHTML]="detail"></p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
