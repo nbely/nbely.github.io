@@ -7,6 +7,7 @@ import { ChevronSVGComponent } from './components/arrow-button/chevron-svg/chevr
 import { ExperienceCardComponent } from './components/experience-page/experience-card/experience-card.component';
 import { ExperienceDialogComponent } from './components/experience-page/experience-card/experience-dialog/experience-dialog.component';
 import { ExperiencePageComponent } from './components/experience-page/experience-page.component';
+import { IconComponent } from './components/icon/icon.component';
 import { IconGroupComponent } from './components/icon-group/icon-group.component';
 
 const sharedComponents = [
@@ -15,15 +16,13 @@ const sharedComponents = [
   ExperienceCardComponent,
   ExperienceDialogComponent,
   ExperiencePageComponent,
-  IconGroupComponent
-]
+  IconComponent,
+  IconGroupComponent,
+];
 
 @NgModule({
   declarations: sharedComponents,
-  imports: [
-    AppUiModule,
-    CommonModule
-  ],
-  exports: sharedComponents
+  imports: [AppUiModule, CommonModule],
+  exports: sharedComponents,
 })
-export class AppSharedModule { }
+export class AppSharedModule {}

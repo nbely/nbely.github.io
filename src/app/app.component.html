@@ -3,22 +3,23 @@
     <button
       mat-button
       class="mobile-hamburger-button"
-      (click)="sidenav.toggle()">
-        <mat-icon>
-          {{ isMenuOpen ? 'menu_open' : 'menu' }}
-        </mat-icon>
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon>
+        {{ isMenuOpen ? "menu_open" : "menu" }}
+      </mat-icon>
     </button>
     <a class="app-title" href="#">Nick Bely</a>
     <nav
       mat-tab-nav-bar
-      [ngClass]="{removeHighlights: isMenuOpen}"
+      [ngClass]="{ removeHighlights: isMenuOpen }"
       [tabPanel]="tabPanel"
     >
       <a
         mat-tab-link
         *ngFor="let link of navLinks"
         (click)="onSelectRoute(link)"
-        [routerLink] = "link"
+        [routerLink]="link"
         routerLinkActive
         [active]="activeLink === link"
         [disabled]="isMenuOpen"
@@ -33,29 +34,30 @@
       autoFocus="false"
       mode="push"
       [(opened)]="isMenuOpen"
-      class="sidenav">
-        <a mat-button (click)="onSidenavClick('introduction')">
-          <mat-icon class="nav-icon">person</mat-icon> About Me
-        </a>
-        <a mat-button (click)="onSidenavClick('background')">
-          <mat-icon class="nav-icon">fingerprint</mat-icon> Background
-        </a>
-        <a mat-button (click)="onSidenavClick('work')">
-          <mat-icon class="nav-icon">business_center</mat-icon> Work
-        </a>
-        <a mat-button (click)="onSidenavClick('projects')">
-          <mat-icon class="nav-icon">assignment</mat-icon> Projects
-        </a>
-        <a mat-button (click)="onSidenavClick('contact')">
-          <mat-icon class="nav-icon">email</mat-icon> Contact Me
-        </a>
+      class="sidenav"
+    >
+      <a mat-button (click)="onSidenavClick('introduction')">
+        <mat-icon class="nav-icon">person</mat-icon> About Me
+      </a>
+      <a mat-button (click)="onSidenavClick('background')">
+        <mat-icon class="nav-icon">fingerprint</mat-icon> Background
+      </a>
+      <a mat-button (click)="onSidenavClick('work')">
+        <mat-icon class="nav-icon">business_center</mat-icon> Work
+      </a>
+      <a mat-button (click)="onSidenavClick('projects')">
+        <mat-icon class="nav-icon">assignment</mat-icon> Projects
+      </a>
+      <a mat-button (click)="onSidenavClick('contact')">
+        <mat-icon class="nav-icon">email</mat-icon> Contact Me
+      </a>
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-tab-nav-panel #tabPanel>
         <router-outlet></router-outlet>
       </mat-tab-nav-panel>
       <footer *ngIf="!isMenuOpen">
-        <p>© Nick Bely 2023</p>
+        <p>© Nick Bely 2024</p>
       </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
