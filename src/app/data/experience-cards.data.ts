@@ -19,7 +19,7 @@ export const workExperienceCards: ExperienceCardModel[] = [
     isModalButtonEnabled: true,
     modalButtonText: 'Read More',
     modalDetails: [
-      'I play a crucial role in the solutioning, design, and development of a new generation application by:<ul><li>Translating complex business requirements into purpose-driven and flexible technical solutions with accompanying Visio wireframe mockups.</li><li>Gathering user feedback through Agile CI/CD development and demoing, allowing for continuous design optimization and high stakeholder confidence.</li><li>Architecting a Create React App with a focus on lean and reusable component design that effectively utilizes third-party packages such as Material UI and AG Grid.</li><li>Transforming non-cohesive, decentralized, and bug-prone UI components into a library of encapsulated, reusable, and dynamic Material UI-based React components.</li></ul>',
+      'I play a crucial role in the solutioning, design, and development of a new order generation application by:<ul><li>Translating complex business requirements into purpose-driven and flexible technical solutions with accompanying Visio wireframe mockups.</li><li>Gathering user feedback through Agile CI/CD development and demoing, allowing for continuous design optimization and high stakeholder confidence.</li><li>Architecting a Create React App with a focus on lean and reusable component design that effectively utilizes third-party packages such as Material UI and AG Grid.</li><li>And transforming non-cohesive, decentralized, and bug-prone UI components into a library of encapsulated, reusable, and dynamic Material UI-based React components.</li></ul>',
       "I'm able to achieve dependable, performant, and highly maintainable code through through Bitbucket Pipeline integration of Whitesource, Prisma and SonarQube scans, in addition to comprehensive (97%) unit test coverage with Jest/React Testing Library.",
       'I assist in minimizing team blockers and deep refactors of the codebase by working closely with the backend team in Java/Spring Boot/PostreSQL. I am often able to spot gaps in the API design early on and provide feedback to ensure that the endpoints are designed in a future-proof manner.',
     ],
@@ -71,7 +71,7 @@ export const workExperienceCards: ExperienceCardModel[] = [
     isModalButtonEnabled: true,
     modalButtonText: 'Read More',
     modalDetails: [
-      'Saw implementation of A/B Tested 7 features through from estimation to release across 14 eCommerce sites in two international markets, inclusive of:<ul><li>Design and implementation of feature configurations with feature flags and post-launch A/B Testing options available for customization per-site.</li><li>Integration with in-house analytics reporting softarem through implementation of tracking events for all features.</li><li>100% automated jest unit test coverage on new feature code in Vue or VanillaJS. In addition to comprehensive Vue component testing via Playwright, Apache FTL integration testing, and Java-based Selenium End-to-End Testing.</li></ul',
+      'Saw implementation of 7 A/B tested features through from estimation to release across 14 eCommerce sites in two international markets, inclusive of:<ul><li>Design and implementation of feature configurations with feature flags and post-launch A/B Testing options available for customization per-site.</li><li>Integration with in-house analytics reporting softarem through implementation of tracking events for all features.</li><li>100% automated jest unit test coverage on new feature code in Vue or VanillaJS. In addition to comprehensive Vue component testing via Playwright, Apache FTL integration testing, and Java-based Selenium End-to-End Testing.</li></ul',
       "Developed 3 of the features across 3 Vue MFE's with Vuex State Management and common Sass styling, providing style overrides on a per-site basis. Features touched critical site areas such as the global navigation, shop, and product pages.",
       'Developed 3 more features in a legacy Apache FTL/Java tech stack, with configuration options defined and served through Java Spring Boot beans. Features introduced further critical global navigation changes in legacy pages, as well as serving of location-specific trending products on the home page demonstrating interoperability with a recommendation API service to show related products via a flyout.',
       'Developed 1 last feature introducing navigation-based enhancements to a standalone web-component checkout service integrated into the main site, with intelligent style variable design for per-site customizability from outside the service.',
@@ -89,12 +89,12 @@ export const projectExperienceCards: ExperienceCardModel[] = [
     ],
     actionLinksText: ['REPO'],
     description:
-      'A PayPal API-integrated application to onboard new tenants and provide an easy way for them to make rent payments and vie their invoic history.',
+      'A PayPal API-integrated application to onboard new tenants and provide an easy way for them to make rent payments and view their invoice history.',
     skillIcons: ['react', 'bootstrap', 'aws', 'golang'],
     isIconGroupLabeled: true,
     details: [
-      'Leading efforts to build a Vite/React/Redux/RTK Query frontend with Sass and Bootstrap UI, with a focus on creating a responsive and accesible user-facing experience.',
-      'Supporting back-end mongoDB access via serverless GoLang Lambda Functions, in addition to user auth via AWS Cognito, handling of PayPal event hooks and invoice scheduling via the Simple Queue Service.',
+      'Leading efforts to build a Vite/React/Redux/RTK Query frontend with Sass and Bootstrap UI and a focus on creating a responsive and accesible user-facing experience.',
+      'Supporting back-end mongoDB access via serverless GoLang Lambda Functions, in addition to user auth via AWS Cognito, handling of PayPal event hooks, and invoice scheduling via the Simple Queue Service.',
     ],
     subtitle: 'React Web App w/ AWS Serverless Backend',
     status: 'In Progress',
@@ -108,8 +108,8 @@ export const projectExperienceCards: ExperienceCardModel[] = [
     skillIcons: ['nodejs', 'discord', 'nextjs', 'tailwindcss'],
     isIconGroupLabeled: true,
     details: [
-      'Utilizing MongoDB for fan-game configuration and player data storage with schemas modeled via the Mongoose library. Game battling made possible through interfacing with IO streams from a forked 3rd party battle simulator.',
-      'Serving MongoDB data to a Next.js/redux web app with Express.js APIs for displaying user profiles and interactable/customizable user adventure-logs and character blogging.',
+      'Utilizing MongoDB for fan-game configuration and player data storage with schemas modeled via the Mongoose library. Includes game battling made possible through interfacing with I/O streams from a forked 3rd party simulator.',
+      'Serving MongoDB data to a Next.js/redux web app with Express.js for displaying user profiles and interactable/customizable user adventure-logs and character blogging.',
     ],
     subtitle: 'Node.js Discord Bot & Next.js Web App',
     status: 'In Progress',
@@ -119,7 +119,7 @@ export const projectExperienceCards: ExperienceCardModel[] = [
     actionLinks: ['https://github.com/nbely/nbely.github.io'],
     actionLinksText: ['REPO'],
     description:
-      'The simple, yet classy site you see before you. Built with the Angular, the framework I started my development career by learning.',
+      'The simple, yet classy site you see before you. Built with Angular, the framework I started my development career by learning.',
     skillIcons: ['angular', 'typescript', 'sass', 'accessibility'],
     isIconGroupLabeled: true,
     details: [
