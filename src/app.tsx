@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
-import { AppProvider, useApp } from './lib/store';
+import { ReactNode, useEffect } from 'react';
+import { AppProvider } from './lib/store';
+import { useApp } from './lib/useApp';
 import PauseMenu from './shell/PauseMenu';
 import TitleScreen from './screens/TitleScreen';
 import PlayScreen from './screens/PlayScreen';
@@ -22,23 +23,34 @@ function Shell() {
   const { state, go } = useApp();
 
   useEffect(() => {
-    const handler = (e) => go(e.detail);
-    window.addEventListener('nav-go', handler);
-    return () => window.removeEventListener('nav-go', handler);
+    const handler = (e: Event) => go((e as CustomEvent<string>).detail);
+    globalThis.addEventListener('nav-go', handler);
+    return () => globalThis.removeEventListener('nav-go', handler);
   }, [go]);
 
   if (state.route === 'title' && !state.visited) {
     return <TitleScreen />;
   }
 
-  let screen;
+  let screen: ReactNode;
   switch (state.route) {
-    case 'title': screen = <TitleScreen />; break;
-    case 'play': screen = <PlayScreen />; break;
-    case 'dex': screen = <DevDex />; break;
-    case 'card': screen = <TrainerCard />; break;
-    case 'link': screen = <LinkUp />; break;
-    default: screen = <PlayScreen />;
+    case 'title':
+      screen = <TitleScreen />;
+      break;
+    case 'play':
+      screen = <PlayScreen />;
+      break;
+    case 'dex':
+      screen = <DevDex />;
+      break;
+    case 'card':
+      screen = <TrainerCard />;
+      break;
+    case 'link':
+      screen = <LinkUp />;
+      break;
+    default:
+      screen = <PlayScreen />;
   }
 
   return (
@@ -46,9 +58,7 @@ function Shell() {
       <MobileTopbar />
       <div className="app-body">
         <PauseMenu />
-        <main className="main-col">
-          {screen}
-        </main>
+        <main className="main-col">{screen}</main>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useApp } from '../lib/store';
+import { useApp } from '../lib/useApp';
 
 export default function TitleScreen() {
   const { state, update, go, markVisited } = useApp();
@@ -10,7 +10,11 @@ export default function TitleScreen() {
 
   return (
     <div className="title-screen">
-      <button className="night-pill" onClick={() => update({ night: !state.night })} title="Toggle night mode">
+      <button
+        className="night-pill"
+        onClick={() => update({ night: !state.night })}
+        title="Toggle night mode"
+      >
         {state.night ? '☀ DAY' : '☾ NIGHT'}
       </button>
 
@@ -18,10 +22,11 @@ export default function TitleScreen() {
         <h1 className="logo">
           <span className="nick">NICK</span> <span className="bely">BELY</span>
         </h1>
-        <div className="version">ver. 2.0 — new game</div>
+        <div className="version">ver. 3.0 — new game</div>
 
         <p className="tagline">
-          full-stack dev · open-source author<br/>
+          full-stack dev · open-source author
+          <br />
           tells stories, ships weird useful things
         </p>
 
@@ -30,7 +35,9 @@ export default function TitleScreen() {
         </button>
 
         <div className="deco-row" aria-hidden="true">
-          <span className="px" /><span className="px" /><span className="px" /><span className="px" /><span className="px" /><span className="px" /><span className="px" /><span className="px" />
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span key={i} className="px" />
+          ))}
         </div>
 
         <div className="meta">

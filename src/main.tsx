@@ -5,4 +5,8 @@ import './styles/app.css';
 import './styles/screens.css';
 import './styles/trainer-link.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
