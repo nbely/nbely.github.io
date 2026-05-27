@@ -28,6 +28,12 @@ interface FormState {
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
+function getSocialTooltip(s: Social): string {
+  if (s.action === 'copy') return `Tap to copy ${s.handle}`;
+  if (s.action === 'mail') return `Open mail to ${s.handle}`;
+  return `${s.label}: ${s.handle} (opens in new tab)`;
+}
+
 const REASONS: Reason[] = [
   { value: 'work', label: 'WORK / OPPORTUNITY' },
   { value: 'collab', label: 'COLLAB / OSS' },
@@ -118,7 +124,8 @@ export default function LinkUp() {
     const e: FormErrors = {};
     if (!form.name.trim()) e.name = 'Trainer name required';
     if (!form.email.trim()) e.email = 'Email required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Email looks off';
+    else if (!/^[^@\s]{1,64}@[^@\s]{1,253}\.[^@\s]{2,63}$/.test(form.email))
+      e.email = 'Email looks off';
     if (!form.subject.trim()) e.subject = 'Subject required';
     if (!form.message.trim() || form.message.trim().length < 8) e.message = 'A bit more, maybe?';
     setErrors(e);
@@ -178,12 +185,7 @@ export default function LinkUp() {
 
       <div className="lu-socials">
         {SOCIALS.map((s) => {
-          const tooltip =
-            s.action === 'copy'
-              ? `Tap to copy ${s.handle}`
-              : s.action === 'mail'
-                ? `Open mail to ${s.handle}`
-                : `${s.label}: ${s.handle} (opens in new tab)`;
+          const tooltip = getSocialTooltip(s);
           return (
             <a
               key={s.id}

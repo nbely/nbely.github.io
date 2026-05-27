@@ -3,6 +3,12 @@ import { useApp } from '../lib/useApp';
 import { DexArt, DexArtKind } from '../lib/sprites';
 import { DialogueBox, DialogueChoice, DialogueNode } from '../lib/dialogue';
 
+function getTypeChipClass(index: number): string {
+  if (index === 0) return 'emerald';
+  if (index === 1) return 'gold';
+  return '';
+}
+
 interface DexAction {
   label: string;
   href?: string;
@@ -215,10 +221,7 @@ export default function DevDex() {
                 <div className="name">{entry.name}</div>
                 <div className="types">
                   {entry.types.map((t, i) => (
-                    <span
-                      key={t}
-                      className={`type-chip ${i === 0 ? 'emerald' : i === 1 ? 'gold' : ''}`}
-                    >
+                    <span key={t} className={`type-chip ${getTypeChipClass(i)}`}>
                       {t}
                     </span>
                   ))}
